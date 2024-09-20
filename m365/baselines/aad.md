@@ -1,34 +1,25 @@
-**`TLP:CLEAR`**
-
-# CISA M365 Security Configuration Baseline for Microsoft Entra ID
+# Vimsec M365 Security Configuration Baseline for Microsoft Entra ID
 
 Microsoft Entra ID is a cloud-based identity and access control service that provides security and functional capabilities. This Secure Configuration Baseline (SCB) provides specific policies to help secure Microsoft Entra ID.
 
-The Secure Cloud Business Applications (SCuBA) project run by the Cybersecurity and Infrastructure Security Agency (CISA) provides guidance and capabilities to secure federal civilian executive branch (FCEB) agencies’ cloud business application environments and protect federal information that is created, accessed, shared, and stored in those environments.
+This document outlines an industry-standard security benchmark utilising best practice guidelines from the US Government and CIS Benchmarks. It aims to help organisations secure information assets stored within M365 cloud business application environments through consistent, effective, and manageable security configurations. These baselines acknowledge that every organisation has unique security needs and risk tolerances.
 
-The CISA SCuBA SCBs for M365 help secure federal information assets stored within M365 cloud business application environments through consistent, effective, and manageable security configurations. CISA created baselines tailored to the federal government’s threats and risk tolerance with the knowledge that every organization has different threat models and risk tolerance. Non-governmental organizations may also find value in applying these baselines to reduce risks.
+The information in this document is provided "as is" for informational purposes only. Vimsec does not endorse any commercial product or service, including any subjects of analysis. Any reference to specific commercial entities, products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply endorsement, recommendation, or favouritism by Vimsec. This document does not address, ensure compliance with, or supersede any law, regulation, or other authority. Organisations are responsible for complying with any record-keeping, privacy, and other laws that may apply to the use of technology. This document is not intended to, and does not, create any right or benefit for anyone.
 
-The information in this document is being provided “as is” for INFORMATIONAL PURPOSES ONLY. CISA does not endorse any commercial product or service, including any subjects of analysis. Any reference to specific commercial entities or commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply endorsement, recommendation, or favoritism by CISA. This document does not address, ensure compliance with, or supersede any law, regulation, or other authority. Entities are responsible for complying with any recordkeeping, privacy, and other laws that may apply to the use of technology. This document is not intended to, and does not, create any right or benefit for anyone against the United States, its departments, agencies, or entities, its officers, employees, or agents, or any other person.
-
-> This document is marked TLP:CLEAR. Recipients may share this information without restriction. Information is subject to standard copyright rules. For more information on the Traffic Light Protocol, see https://www.cisa.gov/tlp.
-
-## License Compliance and Copyright
-Portions of this document are adapted from documents in Microsoft’s [M365](https://github.com/MicrosoftDocs/microsoft-365-docs/blob/public/LICENSE) and [Azure](https://github.com/MicrosoftDocs/azure-docs/blob/main/LICENSE) GitHub repositories. The respective documents are subject to copyright and are adapted under the terms of the Creative Commons Attribution 4.0 International license. Sources are linked throughout this document. The United States government has adapted selections of these documents to develop innovative and scalable configuration standards to strengthen the security of widely used cloud-based software services.
+## Licence Compliance and Copyright
+Portions of this document are adapted from documents in Microsoft's [M365](https://github.com/MicrosoftDocs/microsoft-365-docs/blob/public/LICENSE) and [Azure](https://github.com/MicrosoftDocs/azure-docs/blob/main/LICENSE) GitHub repositories. The respective documents are subject to copyright and are adapted under the terms of the Creative Commons Attribution 4.0 International licence. Sources are linked throughout this document.
 
 ## Assumptions
-The **License Requirements** sections of this document assume the organization is using an [M365 E3](https://www.microsoft.com/en-us/microsoft-365/compare-microsoft-365-enterprise-plans) or [G3](https://www.microsoft.com/en-us/microsoft-365/government) license level at a minimum. Therefore, only licenses not included in E3/G3 are listed.
+The **Licence Requirements** sections of this document assume the organisation is using an [M365 E3](https://www.microsoft.com/en-us/microsoft-365/compare-microsoft-365-enterprise-plans) or [G3](https://www.microsoft.com/en-us/microsoft-365/government) licence level at a minimum. Therefore, only licences not included in E3/G3 are listed.
 
-Some of the policies in this baseline may link to Microsoft instruction pages which assume that an agency has created emergency access accounts in Microsoft Entra ID and [implemented strong security measures](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-emergency-access#create-emergency-access-accounts) to protect the credentials of those accounts.
+Some of the policies in this baseline may link to Microsoft instruction pages which assume that an company has created emergency access accounts in Microsoft Entra ID and [implemented strong security measures](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-emergency-access#create-emergency-access-accounts) to protect the credentials of those accounts.
 
 ## Key Terminology
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
 The following are key terms and descriptions used in this document.
 
-**Microsoft Entra ID hybrid**: This term denotes the scenario
-when an organization has an on-premises Microsoft Windows Server Active Directory that contains the
-master user directory but federates access to the cloud M365
-Microsoft Entra ID tenant.
+**Microsoft Entra ID hybrid**: This term denotes the scenario when an organisation has an on-premises Microsoft Windows Server Active Directory that contains the master user directory but federates access to the cloud M365 Microsoft Entra ID tenant.
 
 **Resource Tenant & Home Tenant**: In scenarios where guest users are involved the **resource tenant** hosts the M365 target resources that the guest user is accessing. The **home tenant** is the one that hosts the guest user's identity.
 
@@ -51,7 +42,9 @@ Throughout this document, this list of highly privileged roles is referenced in 
 
 Numerous policies in this baseline rely on Microsoft Entra ID Conditional Access. Conditional Access is a feature that allows administrators to limit access to resources using conditions such as user or group membership, device, IP location, and real-time risk detection. This section provides guidance and tools when implementing baseline policies which rely on Microsoft Entra ID Conditional Access.
 
-As described in Microsoft’s literature related to conditional access policies, CISA recommends initially setting a policy to **Report-only** when it is created and then performing thorough hands-on testing to help prevent unintended consequences before toggling the policy from **Report-only** to **On**. The policy will only be enforced when it is set to **On**. One tool that can assist with running test simulations is the [What If tool](https://learn.microsoft.com/en-us/entra/identity/conditional-access/what-if-tool). Microsoft also describes [Conditional Access insights and reporting](https://learn.microsoft.com/en-us/entra/identity/conditional-access/howto-conditional-access-insights-reporting) that can assist with testing.
+As described in Microsoft's literature related to conditional access policies, CISA recommends initially setting a policy to **Report-only** when it is created and then performing thorough hands-on testing to help prevent unintended consequences before toggling the policy from **Report-only** to **On**. The policy will only be enforced when it is set to **On**. One tool that can assist with running test simulations is the [What If tool](https://learn.microsoft.com/en-us/entra/identity/conditional-access/what-if-tool). Microsoft also describes [Conditional Access insights and reporting](https://learn.microsoft.com/en-us/entra/identity/conditional-access/howto-conditional-access-insights-reporting) that can assist with testing.
+
+You can access Conditional Access policies directly in the Microsoft Entra admin centre: [Conditional Access Policies](https://entra.microsoft.com/#view/Microsoft_AAD_ConditionalAccess/ConditionalAccessBlade/~/Policies/fromNav/Identity?Microsoft_AAD_IAM_legacyAADRedirect=true).
 
 # Baseline Policies
 
@@ -80,7 +73,7 @@ Legacy authentication SHALL be blocked.
 
 - [Five steps to securing your identity infrastructure](https://learn.microsoft.com/en-us/azure/security/fundamentals/steps-secure-identity)
 
-### License Requirements
+### Licence Requirements
 
 - N/A
 
@@ -88,7 +81,7 @@ Legacy authentication SHALL be blocked.
 
 #### MS.AAD.1.1v1 Instructions
 
-- [Determine if an agency’s existing applications use legacy authentication](https://learn.microsoft.com/en-us/entra/identity/conditional-access/block-legacy-authentication#identify-legacy-authentication-use) before blocking legacy authentication across the entire application base.
+- [Determine if an company's existing applications use legacy authentication](https://learn.microsoft.com/en-us/entra/identity/conditional-access/block-legacy-authentication#identify-legacy-authentication-use) before blocking legacy authentication across the entire application base.
 
 - Create a [Conditional Access policy to block legacy authentication](https://learn.microsoft.com/en-us/entra/identity/conditional-access/howto-conditional-access-policy-block-legacy).
 
@@ -96,7 +89,7 @@ Legacy authentication SHALL be blocked.
 
 This section provides policies that reduce security risks related to potentially compromised user accounts. These policies combine Microsoft Entra ID Protection and Microsoft Entra ID Conditional Access. Microsoft Entra ID Protection uses numerous signals to detect the risk level for each user or sign-in and determine if an account may have been compromised.
 
-- _Additional mitigations to reduce risks associated with the authentication of workload identities:_ Although not covered in this baseline due to the need for an additional non-standard license, Microsoft provides support for mitigating risks related to workload identities (Microsoft Entra ID applications or service principals). Agencies should strongly consider implementing this feature because workload identities present many of the same risks as interactive user access and are commonly used in modern systems. CISA urges organizations to [apply Conditional Access policies to workload identities](https://learn.microsoft.com/en-us/entra/identity/conditional-access/workload-identity).
+- _Additional mitigations to reduce risks associated with the authentication of workload identities:_ Although not covered in this baseline due to the need for an additional non-standard licence, Microsoft provides support for mitigating risks related to workload identities (Microsoft Entra ID applications or service principals). Agencies should strongly consider implementing this feature because workload identities present many of the same risks as interactive user access and are commonly used in modern systems. CISA urges organisations to [apply Conditional Access policies to workload identities](https://learn.microsoft.com/en-us/entra/identity/conditional-access/workload-identity).
 
 - _Note:_ In this section, the term ["high risk"](https://learn.microsoft.com/en-us/entra/id-protection/concept-identity-protection-risks) denotes the risk level applied by the Microsoft Entra ID Protection service to a user account or sign-in event.
 
@@ -116,7 +109,7 @@ Users detected as high risk SHALL be blocked.
 A notification SHOULD be sent to the administrator when high-risk users are detected.
 
 <!--Policy: MS.AAD.2.2v1; Criticality: SHOULD -->
-- _Rationale:_ Notification enables the admin to monitor the event and remediate the risk. This helps the organization proactively respond to cyber intrusions as they occur.
+- _Rationale:_ Notification enables the admin to monitor the event and remediate the risk. This helps the organisation proactively respond to cyber intrusions as they occur.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1078: Valid Accounts](https://attack.mitre.org/techniques/T1078/)
@@ -140,15 +133,207 @@ Sign-ins detected as high risk SHALL be blocked.
 
 - [User experiences with Microsoft Entra Identity Protection](https://learn.microsoft.com/en-us/entra/id-protection/concept-identity-protection-user-experience)
 
-### License Requirements
+### Licence Requirements
 
-- Requires a Microsoft Entra ID P2 license
+- Requires a Microsoft Entra ID P2 licence
 
 ### Implementation
 
 ####  MS.AAD.2.1v1 Instructions
 
-1.  Create a conditional access policy blocking users categorized as high risk by the Identity Protection service. Configure the following policy settings in the new conditional access policy as per the values below:
+1.  Create a conditional access policy blocking users categorised as high risk by the Identity Protection service. Configure the following policy settings in the new conditional access policy as per the values below:
+
+<pre>
+  Users > Include > <b>All users</b>
+
+  Target resources > Cloud apps > <b>All cloud apps</b>
+
+  Conditions > User risk > <b>High</b>
+
+  Access controls > Grant > <b>Block Access</b>
+</pre>
+
+#### MS.AAD.2.2v1 Instructions
+
+1.  [Configure Microsoft Entra ID Protection to send a regularly monitored security mailbox email notification](https://learn.microsoft.com/en-us/entra/id-protection/howto-identity-protection-configure-notifications#configure-users-at-risk-detected-alerts) when user accounts are determined to be high risk.
+
+#### MS.AAD.2.3v1 Instructions
+
+1.  Create a Conditional Access policy blocking sign-ins determined high risk by the Identity Protection service. Configure the following policy settings in the new Conditional Access policy as per the values below:
+
+<pre>
+  Users > Include > <b>All users</b>
+
+  Target resources > Cloud apps > <b>All cloud apps</b>
+
+  Conditions > Sign-in risk > <b>High</b>
+
+  Access controls > Grant > <b>Block Access</b>
+</pre>
+
+## 3. Strong Authentication and a Secure Registration Process
+
+This section provides policies that help reduce security risks related to user authentication and registration.
+
+Phishing-resistant MFA is required per [Office of Management and Budget Memorandum 22-09](https://www.whitehouse.gov/wp-content/uploads/2022/01/M-22-09.pdf), but for a variety of reasons, implementing it for all users may be challenging. This section provides additional backup security policies to mitigate risk associated with lesser forms of MFA. For example, Policy MS.AAD.3.2v1 below enforces MFA without stipulating the specific MFA method.
+
+<img src="/images/aad-mfa.png"
+alt="Weak MFA methods are SMS and Voice. Stronger MFA are Authenticator Push Notifications, Authenticator Phone Sign-in, Software Tokens OTP, and Hardware Tokens OTP. Strongest MFA methods are FIDO2 (preferred), Windows Hello (preferred), Microsoft Entra certificate-based authentication (preferred) and federated PIV card." />
+
+Figure 1: Depiction of MFA methods from weakest to strongest. _Adapted from [Microsoft Page](https://learn.microsoft.com/en-us/entra/identity/authentication/concept-authentication-methods)_
+
+### Policies
+#### MS.AAD.3.1v1
+Phishing-resistant MFA SHALL be enforced for all users.
+
+The phishing-resistant methods **Microsoft Entra ID certificate-based authentication (CBA)**, **FIDO2 Security Key** and **Windows Hello for Business** are the recommended authentication options since they offer forms of MFA with the least weaknesses. For federal agencies, Microsoft Entra ID CBA supports federal PIV card authentication directly to Microsoft Entra ID.
+
+**`TLP:CLEAR`**
+
+# Vimsec M365 Security Configuration Baseline for Microsoft Entra ID
+
+Microsoft Entra ID is a cloud-based identity and access control service that provides security and functional capabilities. This Secure Configuration Baseline (SCB) provides specific policies to help secure Microsoft Entra ID.
+
+This document outlines an industry-standard security benchmark utilising best practice guidelines from the US Government and CIS Benchmarks. It aims to help organisations secure information assets stored within M365 cloud business application environments through consistent, effective, and manageable security configurations. These baselines acknowledge that every organisation has unique security needs and risk tolerances.
+
+The information in this document is provided "as is" for informational purposes only. Vimsec does not endorse any commercial product or service, including any subjects of analysis. Any reference to specific commercial entities, products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply endorsement, recommendation, or favouritism by Vimsec. This document does not address, ensure compliance with, or supersede any law, regulation, or other authority. Organisations are responsible for complying with any record-keeping, privacy, and other laws that may apply to the use of technology. This document is not intended to, and does not, create any right or benefit for anyone.
+
+## Licence Compliance and Copyright
+Portions of this document are adapted from documents in Microsoft's [M365](https://github.com/MicrosoftDocs/microsoft-365-docs/blob/public/LICENSE) and [Azure](https://github.com/MicrosoftDocs/azure-docs/blob/main/LICENSE) GitHub repositories. The respective documents are subject to copyright and are adapted under the terms of the Creative Commons Attribution 4.0 International licence. Sources are linked throughout this document.
+
+## Assumptions
+The **Licence Requirements** sections of this document assume the organisation is using an [M365 E3](https://www.microsoft.com/en-us/microsoft-365/compare-microsoft-365-enterprise-plans) or [G3](https://www.microsoft.com/en-us/microsoft-365/government) licence level at a minimum. Therefore, only licences not included in E3/G3 are listed.
+
+Some of the policies in this baseline may link to Microsoft instruction pages which assume that an company has created emergency access accounts in Microsoft Entra ID and [implemented strong security measures](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-emergency-access#create-emergency-access-accounts) to protect the credentials of those accounts.
+
+## Key Terminology
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
+
+The following are key terms and descriptions used in this document.
+
+**Microsoft Entra ID hybrid**: This term denotes the scenario when an organisation has an on-premises Microsoft Windows Server Active Directory that contains the master user directory but federates access to the cloud M365 Microsoft Entra ID tenant.
+
+**Resource Tenant & Home Tenant**: In scenarios where guest users are involved the **resource tenant** hosts the M365 target resources that the guest user is accessing. The **home tenant** is the one that hosts the guest user's identity.
+
+## Highly Privileged Roles
+
+This section provides a list of what CISA considers highly privileged [built-in roles in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/permissions-reference). This list is referenced in numerous baseline policies throughout this document. Agencies should consider this reference as a minimum list and can apply the respective baseline policies to additional Microsoft Entra ID roles as necessary.
+
+- Global Administrator
+- Privileged Role Administrator
+- User Administrator
+- SharePoint Administrator
+- Exchange Administrator
+- Hybrid Identity Administrator
+- Application Administrator
+- Cloud Application Administrator
+
+Throughout this document, this list of highly privileged roles is referenced in numerous baseline policies. Agencies should consider this list a foundational reference and apply respective baseline policies to additional Microsoft Entra ID roles as necessary.
+
+## Conditional Access Policies
+
+Numerous policies in this baseline rely on Microsoft Entra ID Conditional Access. Conditional Access is a feature that allows administrators to limit access to resources using conditions such as user or group membership, device, IP location, and real-time risk detection. This section provides guidance and tools when implementing baseline policies which rely on Microsoft Entra ID Conditional Access.
+
+As described in Microsoft's literature related to conditional access policies, CISA recommends initially setting a policy to **Report-only** when it is created and then performing thorough hands-on testing to help prevent unintended consequences before toggling the policy from **Report-only** to **On**. The policy will only be enforced when it is set to **On**. One tool that can assist with running test simulations is the [What If tool](https://learn.microsoft.com/en-us/entra/identity/conditional-access/what-if-tool). Microsoft also describes [Conditional Access insights and reporting](https://learn.microsoft.com/en-us/entra/identity/conditional-access/howto-conditional-access-insights-reporting) that can assist with testing.
+
+You can access Conditional Access policies directly in the Microsoft Entra admin centre: [Conditional Access Policies](https://entra.microsoft.com/#view/Microsoft_AAD_ConditionalAccess/ConditionalAccessBlade/~/Policies/fromNav/Identity?Microsoft_AAD_IAM_legacyAADRedirect=true).
+
+# Baseline Policies
+
+## 1. Legacy Authentication
+
+This section provides policies that reduce security risks related to legacy authentication protocols that do not support multifactor authentication (MFA).
+
+### Policies
+#### MS.AAD.1.1v1
+Legacy authentication SHALL be blocked.
+
+<!--Policy: MS.AAD.1.1v1; Criticality: SHALL -->
+- _Rationale:_ The security risk of allowing legacy authentication protocols is they do not support MFA. Blocking legacy protocols reduces the impact of user credential theft.
+- _Last modified:_ June 2023
+- _MITRE ATT&CK TTP Mapping:_
+  - [T1110: Brute Force](https://attack.mitre.org/techniques/T1110/)
+    - [T1110.001: Password Guessing](https://attack.mitre.org/techniques/T1110/001/)
+    - [T1110.002: Password Cracking](https://attack.mitre.org/techniques/T1110/002/)
+    - [T1110.003: Password Spraying](https://attack.mitre.org/techniques/T1110/003/)
+  - [T1078: Valid Accounts](https://attack.mitre.org/techniques/T1078/)
+    - [T1078.004: Cloud Accounts](https://attack.mitre.org/techniques/T078/004/)
+
+### Resources
+
+- [Common Conditional Access policy: Block legacy authentication](https://learn.microsoft.com/en-us/entra/identity/conditional-access/howto-conditional-access-policy-block-legacy)
+
+- [Five steps to securing your identity infrastructure](https://learn.microsoft.com/en-us/azure/security/fundamentals/steps-secure-identity)
+
+### Licence Requirements
+
+- N/A
+
+### Implementation
+
+#### MS.AAD.1.1v1 Instructions
+
+- [Determine if an company's existing applications use legacy authentication](https://learn.microsoft.com/en-us/entra/identity/conditional-access/block-legacy-authentication#identify-legacy-authentication-use) before blocking legacy authentication across the entire application base.
+
+- Create a [Conditional Access policy to block legacy authentication](https://learn.microsoft.com/en-us/entra/identity/conditional-access/howto-conditional-access-policy-block-legacy).
+
+## 2. Risk Based Policies
+
+This section provides policies that reduce security risks related to potentially compromised user accounts. These policies combine Microsoft Entra ID Protection and Microsoft Entra ID Conditional Access. Microsoft Entra ID Protection uses numerous signals to detect the risk level for each user or sign-in and determine if an account may have been compromised.
+
+- _Additional mitigations to reduce risks associated with the authentication of workload identities:_ Although not covered in this baseline due to the need for an additional non-standard licence, Microsoft provides support for mitigating risks related to workload identities (Microsoft Entra ID applications or service principals). Agencies should strongly consider implementing this feature because workload identities present many of the same risks as interactive user access and are commonly used in modern systems. CISA urges organisations to [apply Conditional Access policies to workload identities](https://learn.microsoft.com/en-us/entra/identity/conditional-access/workload-identity).
+
+- _Note:_ In this section, the term ["high risk"](https://learn.microsoft.com/en-us/entra/id-protection/concept-identity-protection-risks) denotes the risk level applied by the Microsoft Entra ID Protection service to a user account or sign-in event.
+
+### Policies
+#### MS.AAD.2.1v1
+Users detected as high risk SHALL be blocked.
+
+<!--Policy: MS.AAD.2.1v1; Criticality: SHALL -->
+- _Rationale:_ Blocking high-risk users may prevent compromised accounts from accessing the tenant.
+- _Last modified:_ June 2023
+- _Note:_ Users identified as high risk by Microsoft Entra ID Identity Protection can be blocked from accessing the system via a Microsoft Entra ID Conditional Access policy. A high-risk user will be blocked until an administrator remediates their account.
+- _MITRE ATT&CK TTP Mapping:_
+  - [T1078: Valid Accounts](https://attack.mitre.org/techniques/T1078/)
+    - [T1078.004: Cloud Accounts](https://attack.mitre.org/techniques/T078/004/)
+
+#### MS.AAD.2.2v1
+A notification SHOULD be sent to the administrator when high-risk users are detected.
+
+<!--Policy: MS.AAD.2.2v1; Criticality: SHOULD -->
+- _Rationale:_ Notification enables the admin to monitor the event and remediate the risk. This helps the organisation proactively respond to cyber intrusions as they occur.
+- _Last modified:_ June 2023
+- _MITRE ATT&CK TTP Mapping:_
+  - [T1078: Valid Accounts](https://attack.mitre.org/techniques/T1078/)
+    - [T1078.004: Cloud Accounts](https://attack.mitre.org/techniques/T078/004/)
+
+#### MS.AAD.2.3v1
+Sign-ins detected as high risk SHALL be blocked.
+
+<!--Policy: MS.AAD.2.3v1; Criticality: SHALL -->
+- _Rationale:_ This prevents compromised accounts from accessing the tenant.
+- _Last modified:_ June 2023
+- _MITRE ATT&CK TTP Mapping:_
+  - [T1078: Valid Accounts](https://attack.mitre.org/techniques/T1078/)
+    - [T1078.004: Cloud Accounts](https://attack.mitre.org/techniques/T078/004/)
+
+### Resources
+
+- [What are risk detections?](https://learn.microsoft.com/en-us/entra/id-protection/concept-identity-protection-risks)
+
+- [Simulating risk detections in Identity Protection](https://learn.microsoft.com/en-us/entra/id-protection/howto-identity-protection-simulate-risk)
+
+- [User experiences with Microsoft Entra Identity Protection](https://learn.microsoft.com/en-us/entra/id-protection/concept-identity-protection-user-experience)
+
+### Licence Requirements
+
+- Requires a Microsoft Entra ID P2 licence
+
+### Implementation
+
+####  MS.AAD.2.1v1 Instructions
+
+1.  Create a conditional access policy blocking users categorised as high risk by the Identity Protection service. Configure the following policy settings in the new conditional access policy as per the values below:
 
 <pre>
   Users > Include > <b>All users</b>
@@ -198,7 +383,7 @@ The phishing-resistant methods **Microsoft Entra ID certificate-based authentica
 If on-premises PIV authentication and federation to Microsoft Entra ID is used, [enforce PIV logon via Microsoft Active Directory group policy](https://www.idmanagement.gov/implement/scl-windows/).
 
 <!--Policy: MS.AAD.3.1v1; Criticality: SHALL -->
-- _Rationale:_ Weaker forms of MFA do not protect against sophisticated phishing attacks. By enforcing methods resistant to phishing, those risks are minimized.
+- _Rationale:_ Weaker forms of MFA do not protect against sophisticated phishing attacks. By enforcing methods resistant to phishing, those risks are minimised.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1566: Phishing](https://attack.mitre.org/techniques/T1566/)
@@ -268,7 +453,7 @@ Phishing-resistant MFA SHALL be required for highly privileged roles.
 Managed devices SHOULD be required for authentication.
 
 <!--Policy: MS.AAD.3.7v1; Criticality: SHOULD -->
-- _Rationale:_ The security risk of an adversary authenticating to the tenant from their own device is reduced by requiring a managed device to authenticate. Managed devices are under the provisioning and control of the agency. [OMB-22-09](https://www.whitehouse.gov/wp-content/uploads/2022/01/M-22-09.pdf) states, "When authorizing users to access resources, agencies must consider at least one device-level signal alongside identity information about the authenticated user."
+- _Rationale:_ The security risk of an adversary authenticating to the tenant from their own device is reduced by requiring a managed device to authenticate. Managed devices are under the provisioning and control of the company. [OMB-22-09](https://www.whitehouse.gov/wp-content/uploads/2022/01/M-22-09.pdf) states, "When authorising users to access resources, agencies must consider at least one device-level signal alongside identity information about the authenticated user."
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1078: Valid Accounts](https://attack.mitre.org/techniques/T1078/)
@@ -278,7 +463,7 @@ Managed devices SHOULD be required for authentication.
 Managed Devices SHOULD be required to register MFA.
 
 <!--Policy: MS.AAD.3.8v1; Criticality: SHOULD -->
-- _Rationale:_ Reduce risk of an adversary using stolen user credentials and then registering their own MFA device to access the tenant by requiring a managed device provisioned and controlled by the agency to perform registration actions. This prevents the adversary from using their own unmanaged device to perform the registration.
+- _Rationale:_ Reduce risk of an adversary using stolen user credentials and then registering their own MFA device to access the tenant by requiring a managed device provisioned and controlled by the company to perform registration actions. This prevents the adversary from using their own unmanaged device to perform the registration.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1078: Valid Accounts](https://attack.mitre.org/techniques/T1078/)
@@ -298,9 +483,9 @@ Managed Devices SHOULD be required to register MFA.
 
 - [Microsoft Entra joined devices](https://learn.microsoft.com/en-us/entra/identity/devices/concept-directory-join)
 
-- [Set up automatic enrollment for Windows devices (for Intune)](https://learn.microsoft.com/en-us/mem/intune/enrollment/windows-enroll)
+- [Set up automatic enrolment for Windows devices (for Intune)](https://learn.microsoft.com/en-us/mem/intune/enrollment/windows-enroll)
 
-### License Requirements
+### Licence Requirements
 
 - Policies related to managed devices require Microsoft Intune.
 
@@ -333,7 +518,7 @@ Managed Devices SHOULD be required to register MFA.
 #### MS.AAD.3.3v1 Instructions
 If phishing-resistant MFA has not been deployed yet and Microsoft Authenticator is in use, configure Authenticator to display context information to users when they log in.
 
-1. In ** Microsoft Entra admin center**, click **Security > Authentication methods > Microsoft Authenticator**.
+1. In ** Microsoft Entra admin centre**, click **Security > Authentication methods > Microsoft Authenticator**.
 2. Click the **Configure** tab.
 3. For **Allow use of Microsoft Authenticator OTP** select *No*.
 4. Under **Show application name in push and passwordless notifications** select **Status > Enabled** and **Target > Include > All users**.
@@ -346,7 +531,7 @@ If phishing-resistant MFA has not been deployed yet and Microsoft Authenticator 
 2. Once ready to finish the migration, [set the **Manage Migration** option to **Migration Complete**](https://learn.microsoft.com/en-us/entra/identity/authentication/how-to-authentication-methods-manage#finish-the-migration).
 
 #### MS.AAD.3.5v1 Instructions
-1. In **Microsoft Entra admin center** , click **Security > Authentication methods**
+1. In **Microsoft Entra admin centre** , click **Security > Authentication methods**
 2. Click on the **SMS**, **Voice Call**, and **Email OTP** authentication methods and disable each of them. Their statuses should be **Enabled > No** on the **Authentication methods > Policies** page.
 
 #### MS.AAD.3.6v1 Instructions
@@ -385,16 +570,16 @@ If phishing-resistant MFA has not been deployed yet and Microsoft Authenticator 
   Access controls > Grant > Grant Access > <b>Require device to be marked as compliant</b> and <b>Require Microsoft Entra ID hybrid joined device</b> > For multiple controls > <b>Require one of the selected controls</b>
 </pre>
 
-## 4. Centralized Log Collection
+## 4. centralised Log Collection
 
 This section provides policies to reduce security risks related to the lack of security logs, which hampers security visibility.
 
 ### Policies
 #### MS.AAD.4.1v1
-Security logs SHALL be sent to the agency's security operations center for monitoring.
+Security logs SHALL be sent to the company's security operations centre for monitoring.
 
 <!--Policy: MS.AAD.4.1v1; Criticality: SHALL -->
-- _Rationale:_ The security risk of not having visibility into cyber attacks is reduced by collecting logs in the agency’s centralized security detection infrastructure. This makes security events available for auditing, query, and incident response.
+- _Rationale:_ The security risk of not having visibility into cyber attacks is reduced by collecting logs in the company's centralised security detection infrastructure. This makes security events available for auditing, query, and incident response.
 - _Last modified:_ June 2023
 - _Note:_ The following Microsoft Entra ID logs (configured in diagnostic settings), are required: `AuditLogs, SignInLogs, RiskyUsers, UserRiskEvents, NonInteractiveUserSignInLogs, ServicePrincipalSignInLogs, ADFSSignInLogs, RiskyServicePrincipals, ServicePrincipalRiskEvents, EnrichedOffice365AuditLogs, MicrosoftGraphActivityLogs`. If managed identities are used for Azure resources, also send the `ManagedIdentitySignInLogs` log type. If the Microsoft Entra ID Provisioning Service is used to provision users to software-as-a-service (SaaS) apps or other systems, also send the `ProvisioningLogs` log type.
 - _Note:_ Agencies can benefit from security detection capabilities offered by the CISA Cloud Log Aggregation Warehouse (CLAW) system. Agencies are urged to send the logs to CLAW. Contact CISA at cyberliason@cisa.dhs.gov to request integration instructions.
@@ -410,15 +595,15 @@ Security logs SHALL be sent to the agency's security operations center for monit
 
 - [National Cybersecurity Protection System-Cloud Interface Reference Architecture Volume One: General Guidance](https://www.cisa.gov/sites/default/files/publications/NCPS%20Cloud%20Interface%20RA%20Volume%20One%20%282021-05-14%29.pdf)
 
-### License Requirements
+### Licence Requirements
 
-- An Azure subscription may be required to send logs to an external system, such as the agency's Security Information and Event Management (SIEM).
+- An Azure subscription may be required to send logs to an external system, such as the company's Security Information and Event Management (SIEM).
 
 ### Implementation
 
 #### MS.AAD.4.1v1 Instructions
 
-Follow the configuration instructions unique to the products and integration patterns at your organization to send the security logs to the security operations center for monitoring.
+Follow the configuration instructions unique to the products and integration patterns at your organisation to send the security logs to the security operations centre for monitoring.
 
 ## 5. Application Registration and Consent
 
@@ -429,7 +614,7 @@ This section provides policies that help reduce security risk of malicious appli
 Only administrators SHALL be allowed to register applications.
 
 <!--Policy: MS.AAD.5.1v1; Criticality: SHALL -->
-- _Rationale:_ Application access for the tenant presents a heightened security risk compared to interactive user access because applications are typically not subject to critical security protections, such as MFA policies. Reduce risk of unauthorized users installing malicious applications into the tenant by ensuring that only specific privileged users can register applications.
+- _Rationale:_ Application access for the tenant presents a heightened security risk compared to interactive user access because applications are typically not subject to critical security protections, such as MFA policies. Reduce risk of unauthorised users installing malicious applications into the tenant by ensuring that only specific privileged users can register applications.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1098: Account Manipulation](https://attack.mitre.org/techniques/T1098/)
@@ -807,7 +992,7 @@ Exception cases:
 
 ## 8. Guest User Access
 
-This section provides policies that help reduce security risks related to integrating M365 guest users. A guest user is a specific type of external user who belongs to a separate organization but can access files, meetings, Teams, and other data in the target tenant. It is common to invite guest users to a tenant for cross-agency collaboration purposes.
+This section provides policies that help reduce security risks related to integrating M365 guest users. A guest user is a specific type of external user who belongs to a separate organisation but can access files, meetings, Teams, and other data in the target tenant. It is common to invite guest users to a tenant for cross-company collaboration purposes.
 
 #### MS.AAD.8.1v1
 Guest users SHOULD have limited or restricted access to Microsoft Entra ID directory objects.
@@ -825,17 +1010,17 @@ Guest users SHOULD have limited or restricted access to Microsoft Entra ID direc
 Only users with the Guest Inviter role SHOULD be able to invite guest users.
 
 <!--Policy: MS.AAD.8.2v1; Criticality: SHOULD -->
-- _Rationale:_ By only allowing an authorized group of individuals to invite external users to create accounts in the tenant, an agency can enforce a guest user account approval process, reducing the risk of unauthorized account creation.
+- _Rationale:_ By only allowing an authorized group of individuals to invite external users to create accounts in the tenant, an company can enforce a guest user account approval process, reducing the risk of unauthorized account creation.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1098: Account Manipulation](https://attack.mitre.org/techniques/T1098/)
     - [T1098.003: Additional Cloud Roles](https://attack.mitre.org/techniques/T1098/003/)
 
 #### MS.AAD.8.3v1
-Guest invites SHOULD only be allowed to specific external domains that have been authorized by the agency for legitimate business purposes.
+Guest invites SHOULD only be allowed to specific external domains that have been authorized by the company for legitimate business purposes.
 
 <!--Policy: MS.AAD.8.3v1; Criticality: SHOULD -->
-- _Rationale:_ Limiting which domains can be invited to create guest accounts in the tenant helps reduce the risk of users from unauthorized external organizations getting access.
+- _Rationale:_ Limiting which domains can be invited to create guest accounts in the tenant helps reduce the risk of users from unauthorized external organisations getting access.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1078: Valid Accounts](https://attack.mitre.org/techniques/T1078/)
@@ -876,7 +1061,7 @@ Guest invites SHOULD only be allowed to specific external domains that have been
 2. Under **Collaboration restrictions**, select **Allow invitations
     only to the specified domains (most restrictive)**.
 
-3. Select **Target domains** and enter the names of the external domains authorized by the agency for guest user access.
+3. Select **Target domains** and enter the names of the external domains authorized by the company for guest user access.
 
 4. Click **Save**.
 

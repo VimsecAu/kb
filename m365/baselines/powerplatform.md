@@ -1,25 +1,18 @@
-**`TLP:CLEAR`**
+# Vimsec M365 Security Configuration Baseline for Power Platform
 
-# CISA M365 Security Configuration Baseline for Power Platform
+Microsoft 365 (M365) Power Platform is a cloud-based enterprise group of applications comprised of a low-code application development toolkit, business intelligence software, a custom chatbot creator, and app connectivity software. This Secure Configuration Baseline (SCB) provides specific policies to help strengthen Power Platform security.
 
-Microsoft 365 (M365) Power Platform is a cloud-based enterprise group of applications comprised of a low-code application development toolkit, business intelligence software, a custom chat bot creator, and app connectivity software.  This Secure Configuration Baseline (SCB) provides specific policies to help secure Power Platform security.
+This document outlines an industry-standard security benchmark utilising security best practice guidelines from the US Government and CIS Benchmarks. These baselines are designed to help organisations secure information assets stored within M365 cloud business application environments through consistent, effective, and manageable security configurations. Every organisation has different threat models and risk tolerances, and these baselines allow for flexibility in addressing those unique requirements.
 
-The Secure Cloud Business Applications (SCuBA) project run by the Cybersecurity and Infrastructure Security Agency (CISA) provides guidance and capabilities to secure federal civilian executive branch (FCEB) agencies’ cloud business application environments and protect federal information that is created, accessed, shared, and stored in those environments. 
-
-The CISA SCuBA SCBs for M365 help secure federal information assets stored within M365 cloud business application environments through consistent, effective, and manageable security configurations. CISA created baselines tailored to the federal government’s threats and risk tolerance with the knowledge that every organization has different threat models and risk tolerance. Non-governmental organizations may also find value in applying these baselines to reduce risks.
-
-The information in this document is being provided "as is" for INFORMATIONAL PURPOSES ONLY. CISA does not endorse any commercial product or service, including any subjects of analysis. Any reference to specific commercial entities or commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply endorsement, recommendation, or favoritism by CISA. This document does not address, ensure compliance with, or supersede any law, regulation, or other authority. Entities are responsible for complying with any recordkeeping, privacy, and other laws that may apply to the use of technology. This document is not intended to, and does not, create any right or benefit for anyone against the United States, its departments, agencies, or entities, its officers, employees, or agents, or any other person.
-
-> This document is marked TLP:CLEAR. Recipients may share this information without restriction. Information is subject to standard copyright rules. For more information on the Traffic Light Protocol, see https://www.cisa.gov/tlp.
-
+The information in this document is provided "as is" for informational purposes only. Vimsec does not endorse any commercial product or service, including any subjects of analysis. Any reference to specific commercial entities, products, processes, or services by service mark, trademark, manufacturer, or otherwise does not constitute or imply endorsement, recommendation, or favouritism by Vimsec. This document does not address, ensure compliance with, or supersede any law, regulation, or other authority. Organisations are responsible for complying with any record-keeping, privacy, and other laws that may apply to the use of technology. This document is not intended to, and does not, create any right or benefit for anyone.
 
 ## License Compliance and Copyright
 
-Portions of this document are adapted from documents in Microsoft’s [Microsoft 365](https://github.com/MicrosoftDocs/microsoft-365-docs/blob/public/LICENSE) and [Azure](https://github.com/MicrosoftDocs/azure-docs/blob/main/LICENSE) GitHub repositories. The respective documents are subject to copyright and are adapted under the terms of the Creative Commons Attribution 4.0 International license. Source documents are linked throughout this document. The United States Government has adapted selections of these documents to develop innovative and scalable configuration standards to strengthen the security of widely used cloud-based software services.
+Portions of this document are adapted from documents in Microsoft's [Microsoft 365](https://github.com/MicrosoftDocs/microsoft-365-docs/blob/public/LICENSE) and [Azure](https://github.com/MicrosoftDocs/azure-docs/blob/main/LICENSE) GitHub repositories. The respective documents are subject to copyright and are adapted under the terms of the Creative Commons Attribution 4.0 International license. Source documents are linked throughout this document. The United States Government has adapted selections of these documents to develop innovative and scalable configuration standards to strengthen the security of widely used cloud-based software services.
 
 ## Assumptions
 
-The **License Requirements** sections of this document assume the organization is using an [M365 E3](https://www.microsoft.com/en-us/microsoft-365/compare-microsoft-365-enterprise-plans) or [G3](https://www.microsoft.com/en-us/microsoft-365/government) license level at a minimum. Therefore, only licenses not included in E3/G3 are listed.
+The **License Requirements** sections of this document assume the organisation is using an [M365 E3](https://www.microsoft.com/en-us/microsoft-365/compare-microsoft-365-enterprise-plans) or [G3](https://www.microsoft.com/en-us/microsoft-365/government) license level at a minimum. Therefore, only licenses not included in E3/G3 are listed.
 
 ## Key Terminology
 
@@ -29,7 +22,7 @@ interpreted as described in
 [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
 
-The following section summarizes the various Power Platform applications referenced in this baseline:
+The following section summarises the various Power Platform applications referenced in this baseline:
 
 1. **Power Apps**: Low-code application development software used
 to create custom business applications. The apps can be developed as desktop,
@@ -50,7 +43,7 @@ created:
    3. [**Power Pages**](https://learn.microsoft.com/en-us/power-pages/): These apps that are developed to function as either internal or external facing websites.
 
 2. [**Power Automate**](https://learn.microsoft.com/en-us/power-automate/): This is an online tool within Microsoft 365 and add-ins used to create automated workflows between apps
-and services to synchronize files, get notifications, and collect data.
+and services to synchronise files, get notifications, and collect data.
 
 3. [**Power Virtual Agents**](https://learn.microsoft.com/en-us/power-virtual-agents/): These are custom chat bots for use in the stand-alone Power Virtual Agents web app or in a Microsoft Teams
 channel.
@@ -101,7 +94,7 @@ The ability to create trial environments SHALL be restricted to admins.
   admin center \| Microsoft
   Learn](https://learn.microsoft.com/en-us/power-platform/admin/control-environment-creation)
 
-- [Power Platform \| Digital Transformation Agency of
+- [Power Platform \| Digital Transformation company of
   Australia](https://desktop.gov.au/blueprint/office-365.html#power-platform)
 
 - [Microsoft Power Apps Documentation \| Power
@@ -147,8 +140,8 @@ cannot be blocked, such as Teams and SharePoint connectors).
 In the DLP policy, connectors can be configured to restrict read
 and write permissions to the data source/service. Connectors that cannot
 be blocked cannot be configured. Agencies should evaluate the
-connectors and configure them to fit agency needs and security
-requirements. The agency should then create a DLP policy to only allow
+connectors and configure them to fit company needs and security
+requirements. The company should then create a DLP policy to only allow
 those connectors to be used in Power Platform.
 
 When the Microsoft Entra ID tenant is created, by default, a Power Platform
@@ -164,9 +157,9 @@ creating apps in all other created environments.
 A DLP policy SHALL be created to restrict connector access in the default Power Platform environment.
 
 <!--Policy: MS.POWERPLATFORM.2.1v1; Criticality: SHALL -->
-- _Rationale:_ All users in the tenant have access to the default Power Platform environment. Those users may inadvertently use connectors that share sensitive information with others who should not have access to it. Users requiring Power Apps should be directed to conduct development in other Power Platform environments with DLP connector policies customized to suit the user's needs while also maintaining the agency's security posture.
+- _Rationale:_ All users in the tenant have access to the default Power Platform environment. Those users may inadvertently use connectors that share sensitive information with others who should not have access to it. Users requiring Power Apps should be directed to conduct development in other Power Platform environments with DLP connector policies customised to suit the user's needs while also maintaining the company's security posture.
 - _Last Modified:_ June 2023
-- _Note:_ The following connectors drive core Power Platform functionality and enable core Office customization scenarios: Approvals, Dynamics 365 Customer Voice, Excel Online (Business), Microsoft DataverseMicrosoft Dataverse (legacy), Microsoft Teams, Microsoft To-Do (Business), Office 365 Groups, Office 365 Outlook, Office 365 Users, OneDrive for Business, OneNote (Business), Planner, Power Apps Notification, Power BI, SharePoint, Shifts for Microsoft Teams, and Yammer. As such these connectors remain non-blockable to maintain core user scenario functions.
+- _Note:_ The following connectors drive core Power Platform functionality and enable core Office customisation scenarios: Approvals, Dynamics 365 Customer Voice, Excel Online (Business), Microsoft DataverseMicrosoft Dataverse (legacy), Microsoft Teams, Microsoft To-Do (Business), Office 365 Groups, Office 365 Outlook, Office 365 Users, OneDrive for Business, OneNote (Business), Planner, Power Apps Notification, Power BI, SharePoint, Shifts for Microsoft Teams, and Yammer. As such these connectors remain non-blockable to maintain core user scenario functions.
 - _MITRE ATT&CK TTP Mapping:_
   - [T1567: Exfiltration Over Web Service](https://attack.mitre.org/techniques/T1567/)
   - [T1048: Exfiltration Over Alternative Protocol](https://attack.mitre.org/techniques/T1048/)
@@ -184,7 +177,7 @@ Non-default environments SHOULD have at least one DLP policy affecting them.
 ### Resources
 
 - [Data Policies for Power Automate and Power Apps \| Digital
-  Transformation Agency of
+  Transformation company of
   Australia](https://desktop.gov.au/blueprint/office-365.html#power-apps-and-power-automate)
 
 - [Create a data loss prevention (DLP) policy \| Microsoft
@@ -210,13 +203,13 @@ Non-default environments SHOULD have at least one DLP policy affecting them.
 
 3.  Select the **+ New Policy** icon to create a new policy.
 
-4.  Give the policy a suitable agency name and click **Next.**
+4.  Give the policy a suitable company name and click **Next.**
 
 5.  At the **Prebuilt connectors** section, search and select the connectors currently in the **Non-business | default** tab containing sensitive data that can be utilized to create flows and apps.
 
 6.  Click **Move to Business.** Connectors added to this group can not share data with connectors in other groups because connectors can reside in only one data group at a time. 
 
-7.  If necessary (and possible) for the connector, click **Configure connector** at the top of the screen to change connector permissions. This allows greater flexibility for the agency to allow and block certain connector actions for additional customization. 
+7.  If necessary (and possible) for the connector, click **Configure connector** at the top of the screen to change connector permissions. This allows greater flexibility for the company to allow and block certain connector actions for additional customisation. 
 
 8.  For the default environment, move all other connectors to the **Blocked** category. For non-blockable connectors noted above, the Block action will be grayed out and a warning will appear.
 
@@ -244,7 +237,7 @@ Non-default environments SHOULD have at least one DLP policy affecting them.
 Power Platform tenant isolation is different from Microsoft Entra ID wide tenant
 restriction. It does not impact Microsoft Entra-based access outside of Power
 Platform. Power Platform tenant isolation only works for connectors
-using Microsoft Entra-based authentication, such as Office 365 Outlook or
+using Microsoft Entra ID-based authentication, such as Office 365 Outlook or
 SharePoint. The default configuration in Power Platform has tenant
 isolation set to **Off**, allowing for cross-tenant connections to
 be established. A user from tenant A using a Power App with a connector
@@ -276,9 +269,9 @@ Power Platform tenant isolation SHALL be enabled.
 An inbound/outbound connection allowlist SHOULD be configured.
 
 <!--Policy: MS.POWERPLATFORM.3.2v1; Criticality: SHOULD -->
-- _Rationale:_ Depending on agency needs an allowlist can be configured to allow cross tenant collaboration via connectors.
+- _Rationale:_ Depending on company needs an allowlist can be configured to allow cross tenant collaboration via connectors.
 - _Last modified:_ June 2023
-- Note: The allowlist may be empty if the agency has no need for cross tenant collaboration.
+- Note: The allowlist may be empty if the company has no need for cross tenant collaboration.
 
 ### Resources
 
@@ -343,7 +336,7 @@ Content Security Policy SHALL be enforced for model-driven and canvas Power Apps
 
 #### MS.POWERPLATFORM.4.1v1 Instructions
 1.  Sign in to your tenant environment's respective [Power Platform admin
-center](https://learn.microsoft.com/en-us/power-platform/admin/powerapps-us-government#power-apps-us-government-service-urls).
+    center](https://learn.microsoft.com/en-us/power-platform/admin/powerapps-us-government#power-apps-us-government-service-urls).
 
 2.  On the left-hand pane click on **Environments** and then select an environment from the list.
 
@@ -391,7 +384,7 @@ Discover the valid endpoint parameter [here](https://learn.microsoft.com/en-us/p
 3. Then run the following PowerShell command to disable the creation of Power Pages sites by non-administrative users.
 
     ```
-    Set-TenantSettings -RequestBody @{ “disablePortalsCreationByNonAdminUsers” = $true }
+    Set-TenantSettings -RequestBody @{ "disablePortalsCreationByNonAdminUsers" = $true }
     ```
 
 **`TLP:CLEAR`**

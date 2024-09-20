@@ -1,56 +1,26 @@
-**`TLP:CLEAR`**
+# Vimsec M365 Security Configuration Baseline for Defender
 
-# CISA M365 Security Configuration Baseline for Defender
+Microsoft 365 (M365) Defender is a cloud-based enterprise defence suite that coordinates prevention, detection, investigation, and response. This set of tools and features is used to detect many types of attacks.
 
-Microsoft 365 (M365) Defender is a cloud-based enterprise defense suite that
-coordinates prevention, detection, investigation, and response. This set
-of tools and features are used to detect many types of attacks.
+This baseline focuses on the features of Defender for Office 365, but some settings are actually configured in the Microsoft Purview compliance portal. However, for simplicity, both the M365 Defender and Microsoft Purview compliance portal items are contained in this baseline.
 
-This baseline focuses on the features of Defender for Office 365, but
-some settings are actually configured in the Microsoft Purview
-compliance portal. However, for simplicity, both the
-M365 Defender and Microsoft Purview compliance portal
-items are contained in this baseline.
+Generally, use of Microsoft Defender is not required by the baselines of the core M365 products (Exchange Online, Teams, etc.). This baseline serves as a guide should an organisation elect to use Defender as their tool of choice. Please note that some of the controls in the core baselines require the use of a dedicated security tool, such as Defender.
 
-Generally, use of Microsoft Defender is not required by the baselines of
-the core M365 products (Exchange Online, Teams, etc.). This baseline serves as
-a guide should an agency elect to use Defender as their tool of choice. Please
-note that some of the controls in the core baselines require the use of a
-dedicated security tool, such as Defender.
+In addition to these controls, organisations should consider using a cloud access security broker to secure their environments as they adopt zero trust principles.
 
-In addition to these controls, agencies should consider using a cloud
-access security broker to secure their environments as they adopt zero
-trust principles.
+This document outlines an industry-standard security benchmark utilising security best practice guidelines from the US Government and CIS Benchmarks. It aims to help organisations secure information assets stored within M365 cloud business application environments through consistent, effective, and manageable security configurations. These baselines acknowledge that every organisation has unique security needs and risk tolerances.
 
-The Secure Cloud Business Applications (SCuBA) project run by the Cybersecurity
-and Infrastructure Security Agency (CISA) provides guidance and capabilities to
-secure federal civilian executive branch (FCEB) agencies' cloud business
-application environments and protect federal information that is created,
-accessed, shared, and stored in those environments.
+The information in this document is provided "as is" for informational purposes only. Vimsec does not endorse any commercial product or service, including any subjects of analysis. Any reference to specific commercial entities, products, processes, or services by service mark, trademark, manufacturer, or otherwise does not constitute or imply endorsement, recommendation, or favouritism by Vimsec. This document does not address, ensure compliance with, or supersede any law, regulation, or other authority. Organisations are responsible for complying with any record-keeping, privacy, and other laws that may apply to the use of technology. This document is not intended to, and does not, create any right or benefit for anyone.
 
-The CISA SCuBA SCBs for M365 help secure federal information assets stored within
-M365 cloud business application environments through consistent, effective, and
-manageable security configurations. CISA created baselines tailored to the federal
-government's threats and risk tolerance with the knowledge that every organization
-has different threat models and risk tolerance. Non-governmental organizations may
-also find value in applying these baselines to reduce risks.
+## Licence Compliance and Copyright
 
-The information in this document is provided “as is” for INFORMATIONAL PURPOSES
-ONLY. CISA does not endorse any commercial product or service, including any
-subjects of analysis. Any reference to specific commercial entities or commercial
-products, processes, or services by service mark, trademark, manufacturer, or
-otherwise does not constitute or imply endorsement, recommendation, or favoritism
-by CISA. This document does not address, ensure compliance with, or supersede any law, regulation, or other authority. Entities are responsible for complying with any recordkeeping, privacy, and other laws that may apply to the use of technology. This document is not intended to, and does not, create any right or benefit for anyone against the United States, its departments, agencies, or entities, its officers, employees, or agents, or any other person.
-
-> This document is marked TLP:CLEAR. Recipients may share this information without restriction. Information is subject to standard copyright rules. For more information on the Traffic Light Protocol, see https://www.cisa.gov/tlp.
-
-## License Compliance and Copyright
-Portions of this document are adapted from documents in Microsoft's [M365](https://github.com/MicrosoftDocs/microsoft-365-docs/blob/public/LICENSE) and [Azure](https://github.com/MicrosoftDocs/azure-docs/blob/main/LICENSE) GitHub repositories. The respective documents are subject to copyright and are adapted under the terms of the Creative Commons Attribution 4.0 International license. Sources are linked throughout this document. The United States government has adapted selections of these documents to develop innovative and scalable configuration standards to strengthen the security of widely used cloud-based software services.
+Portions of this document are adapted from documents in Microsoft's [M365](https://github.com/MicrosoftDocs/microsoft-365-docs/blob/public/LICENSE) and [Azure](https://github.com/MicrosoftDocs/azure-docs/blob/main/LICENSE) GitHub repositories. The respective documents are subject to copyright and are adapted under the terms of the Creative Commons Attribution 4.0 International licence. Sources are linked throughout this document.
 
 ## Assumptions
-The agency has identified a set of user accounts that are considered sensitive accounts. See [Key Terminology](#key-terminology) for a detailed description of sensitive accounts.
 
-The **License Requirements** sections of this document assume the organization is using an [M365 E3](https://www.microsoft.com/en-us/microsoft-365/compare-microsoft-365-enterprise-plans) or [G3](https://www.microsoft.com/en-us/microsoft-365/government) license level at a minimum. Therefore, only licenses not included in E3/G3 are listed.
+The organisation has identified a set of user accounts that are considered sensitive accounts. See [Key Terminology](#key-terminology) for a detailed description of sensitive accounts.
+
+The **Licence Requirements** sections of this document assume the organisation is using an [M365 E3](https://www.microsoft.com/en-us/microsoft-365/compare-microsoft-365-enterprise-plans) or [G3](https://www.microsoft.com/en-us/microsoft-365/government) licence level at a minimum. Therefore, only licences not included in E3/G3 are listed.
 
 ## Key Terminology
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
@@ -156,7 +126,7 @@ Sensitive accounts SHALL be added to Defender for Office 365 protection in the s
 - [Set up Safe Attachments policies in Microsoft Defender for Office 365 \| Microsoft Learn](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/safe-attachments-policies-configure?view=o365-worldwide)
 - [Set up Safe Links policies in Microsoft Defender for Office 365 \| Microsoft Learn](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/safe-links-policies-configure?view=o365-worldwide)
 
-### License Requirements
+### Licence Requirements
 
 - Defender for Office 365 capabilities require Defender for Office 365 Plan 1 or 2. These are included with E5 and G5 and are available as add-ons for E3 and G3.
 
@@ -237,7 +207,7 @@ instead and configure the policy settings according to [Use the Microsoft 365 De
 
 ## 2. Impersonation Protection
 Impersonation protection checks incoming emails to see if the sender
-address is similar to the users or domains on an agency-defined list. If
+address is similar to the users or domains on a company-defined list. If
 the sender address is significantly similar, as to indicate an
 impersonation attempt, the email is quarantined.
 
@@ -257,13 +227,13 @@ User impersonation protection SHOULD be enabled for sensitive accounts in both t
   - [T1656: Impersonation](https://attack.mitre.org/techniques/T1656/)
 
 #### MS.DEFENDER.2.2v1
-Domain impersonation protection SHOULD be enabled for domains owned by the agency in both the standard and strict preset policies.
+Domain impersonation protection SHOULD be enabled for domains owned by the company in both the standard and strict preset policies.
 
 <!--Policy: MS.DEFENDER.2.2v1; Criticality: SHOULD -->
-- _Rationale:_ Configuring domain impersonation protection for all agency domains reduces the risk of a user being deceived by a look-alike domain. By configuring impersonation protection in both preset policies, administrators can help protect email recipients from impersonated emails, regardless of whether they are added to the standard or strict policy.
+- _Rationale:_ Configuring domain impersonation protection for all company domains reduces the risk of a user being deceived by a look-alike domain. By configuring impersonation protection in both preset policies, administrators can help protect email recipients from impersonated emails, regardless of whether they are added to the standard or strict policy.
 - _Last modified:_ June 2023
 - _Note:_ The standard and strict preset security policies must be enabled to
-          protect agency domains.
+          protect company domains.
 - _MITRE ATT&CK TTP Mapping:_
   - [T1566: Phishing](https://attack.mitre.org/techniques/T1566/)
     - [T1566.001: Spearphishing Attachment](https://attack.mitre.org/techniques/T1566/001/)
@@ -289,13 +259,13 @@ Domain impersonation protection SHOULD be added for important partners in both t
 - [Impersonation settings in anti-phishing policies in Microsoft Defender for Office 365 \| Microsoft Learn](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/anti-phishing-policies-about?view=o365-worldwide#impersonation-settings-in-anti-phishing-policies-in-microsoft-defender-for-office-365)
 - [Use the Microsoft 365 Defender portal to assign Standard and Strict preset security policies to users \| Microsoft Learn](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/preset-security-policies?view=o365-worldwide#use-the-microsoft-365-defender-portal-to-assign-standard-and-strict-preset-security-policies-to-users)
 
-### License Requirements
+### Licence Requirements
 
 - Impersonation protection and advanced phishing thresholds require
   Defender for Office 365 Plan 1 or 2. These are included with E5 and G5
   and are available as add-ons for E3 and G3. As of April 25, 2023,
   anti-phishing for user and domain impersonation and spoof intelligence
-  are not yet available in M365 Government Community Cloud (GCC High) and Department of Defense (DoD) environments. See [Platform features \|
+  are not yet available in M365 Government Community Cloud (GCC High) and Department of Defence (DoD) environments. See [Platform features \|
   Microsoft
   Learn](https://learn.microsoft.com/en-us/office365/servicedescriptions/office-365-platform-service-description/office-365-us-government/office-365-us-government#platform-features)
   for current offerings.
@@ -330,7 +300,7 @@ Domain impersonation protection SHOULD be added for important partners in both t
    protection settings**.
 6. Select **Next** until you reach the **Impersonation Protection** page, then
    select **Next** once more.
-7. On the **Protected custom domains** page, add each agency domain
+7. On the **Protected custom domains** page, add each company domain
    and click **Add** after each.
 8. Select **Next** until you reach the **Trusted senders and domains** page.
 9. (Optional) Add specific domains here to not flag as impersonation when
@@ -415,7 +385,7 @@ Learn](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-secur
 ## 4. Data Loss Prevention
 
 There are several approaches to securing sensitive information, such
-as warning users, encryption, or blocking attempts to share. Agency
+as warning users, encryption, or blocking attempts to share. company
 policies for sensitive information, such as personally identifiable
 information (PII), should dictate how that information is handled and
 inform associated data loss prevention (DLP) policies. Defender can detect
@@ -428,7 +398,7 @@ their environment and needs.
 
 ### Policies
 #### MS.DEFENDER.4.1v1
-A custom policy SHALL be configured to protect PII and sensitive information, as defined by the agency. At a minimum, credit card numbers, U.S. Individual Taxpayer Identification Numbers (ITIN), and U.S. Social Security numbers (SSN) SHALL be blocked.
+A custom policy SHALL be configured to protect PII and sensitive information, as defined by the company. At a minimum, credit card numbers, U.S. Individual Taxpayer Identification Numbers (ITIN), and U.S. Social Security numbers (SSN) SHALL be blocked.
 
 <!--Policy: MS.DEFENDER.4.1v1; Criticality: SHALL -->
 - _Rationale:_ Users may inadvertently share sensitive information with
@@ -463,7 +433,7 @@ The action for the custom policy SHOULD be set to block sharing sensitive inform
 <!--Policy: MS.DEFENDER.4.3v1; Criticality: SHOULD -->
 - _Rationale:_ Access to sensitive information should be prohibited unless
                explicitly allowed. Specific exemptions can be made based
-               on agency policies and valid business justifications.
+               on company policies and valid business justifications.
 - _Last modified:_ June 2023
 - _Note:_ The custom policy referenced here is the same policy
           configured in [MS.DEFENDER.4.1v1](#msdefender41v1).
@@ -476,7 +446,7 @@ The action for the custom policy SHOULD be set to block sharing sensitive inform
 Notifications to inform users and help educate them on the proper use of sensitive information SHOULD be enabled in the custom policy.
 
 <!--Policy: MS.DEFENDER.4.4v1; Criticality: SHOULD -->
-- _Rationale:_ Some users may not be aware of agency policies on
+- _Rationale:_ Some users may not be aware of company policies on
                proper use of sensitive information. Enabling
                notifications provides positive feedback to users when
                accessing sensitive information.
@@ -490,7 +460,7 @@ A list of apps that are restricted from accessing files protected by DLP policy 
 
 <!--Policy: MS.DEFENDER.4.5v1; Criticality: SHOULD -->
 - _Rationale:_ Some apps may inappropriately share accessed files or not
-               conform to agency policies for access to sensitive
+               conform to company policies for access to sensitive
                information. Defining a list of those apps makes it
                possible to use DLP policies to restrict those apps' access
                to sensitive information on endpoints using Defender.
@@ -506,7 +476,7 @@ information by restricted apps and unwanted Bluetooth applications.
 
 <!--Policy: MS.DEFENDER.4.6v1; Criticality: SHOULD -->
 - _Rationale:_ Some apps may inappropriately share accessed files
-               or not conform to agency policies for access to sensitive
+               or not conform to company policies for access to sensitive
                information. Defining a DLP policy with an action to block
                access from restricted apps and unwanted Bluetooth
                applications prevents unauthorized disclosure by those
@@ -516,7 +486,7 @@ information by restricted apps and unwanted Bluetooth applications.
   - The custom policy referenced here is the same policy
     configured in [MS.DEFENDER.4.1v1](#msdefender41v1).
   - This action can only be included if at least one device is onboarded
-    to the agency tenant. Otherwise, the option to block restricted apps will
+    to the company tenant. Otherwise, the option to block restricted apps will
     not be available.
 - _MITRE ATT&CK TTP Mapping:_
   - [T1565: Data Manipulation](https://attack.mitre.org/techniques/T1565/)
@@ -589,13 +559,13 @@ information by restricted apps and unwanted Bluetooth applications.
 
 12. Click **Add**, then **Sensitive info types**.
 
-13. Add information types that protect information sensitive to the agency.
-    At a minimum, the agency should protect:
+13. Add information types that protect information sensitive to the company.
+    At a minimum, the company should protect:
 
     - Credit card numbers
     - U.S. Individual Taxpayer Identification Numbers (ITIN)
     - U.S. Social Security Numbers (SSN)
-    - All agency-defined PII and sensitive information
+    - All company-defined PII and sensitive information
 
 14. Click **Add**.
 
@@ -702,16 +672,16 @@ before the instructions below can be completed.
 
 There are several pre-built alert policies available pertaining to
 various apps in the M365 suite. These alerts give administrators better
-real-time insight into possible security incidents. Guidance on specific alerts to configure can be found in the linked section of the CISA M365 Security Configuration Baseline for Exchange Online.
+real-time insight into possible security incidents. Guidance on specific alerts to configure can be found in the linked section of the Vimsec M365 Security Configuration Baseline for Exchange Online.
 
-- [MS.EXO.16.1v1 \| CISA M365 Security Configuration Baseline for Exchange Online](./exo.md#msexo161v1)
+- [MS.EXO.16.1v1 \| Vimsec M365 Security Configuration Baseline for Exchange Online](./exo.md#msexo161v1)
 
 ### Policies
 #### MS.DEFENDER.5.1v1
-At a minimum, the alerts required by the CISA M365 Security Configuration Baseline for Exchange Online SHALL be enabled.
+At a minimum, the alerts required by the Vimsec M365 Security Configuration Baseline for Exchange Online SHALL be enabled.
 
 <!--Policy: MS.DEFENDER.5.1v1; Criticality: SHALL -->
-- _Rationale:_ Potentially malicious or service-impacting events may go undetected without a means of detecting these events. Setting up a mechanism to alert administrators to the list of events linked above draws attention to them to minimize any impact to users and the agency.
+- _Rationale:_ Potentially malicious or service-impacting events may go undetected without a means of detecting these events. Setting up a mechanism to alert administrators to the list of events linked above draws attention to them to minimize any impact to users and the company.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1562: Impair Defenses](https://attack.mitre.org/techniques/T1562/)
@@ -721,7 +691,7 @@ At a minimum, the alerts required by the CISA M365 Security Configuration Baseli
 The alerts SHOULD be sent to a monitored address or incorporated into a SIEM.
 
 <!--Policy: MS.DEFENDER.5.2v1; Criticality: SHOULD -->
-- _Rationale:_ Suspicious or malicious events, if not resolved promptly, may have a greater impact to users and the agency. Sending alerts to a monitored email address or Security Information and Event Management (SIEM) system helps ensure events are acted upon in a timely manner to limit overall impact.
+- _Rationale:_ Suspicious or malicious events, if not resolved promptly, may have a greater impact to users and the company. Sending alerts to a monitored email address or Security Information and Event Management (SIEM) system helps ensure events are acted upon in a timely manner to limit overall impact.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1562: Impair Defenses](https://attack.mitre.org/techniques/T1562/)
@@ -747,8 +717,8 @@ The alerts SHOULD be sent to a monitored address or incorporated into a SIEM.
 3. Select **Alert Policy**.
 
 4. Select the checkbox next to each alert to enable as determined by the
-   agency and at a minimum those referenced in the
-   [_CISA M365 Security Configuration Baseline for Exchange Online_](./exo.md#msexo161v1) which are:
+   company and at a minimum those referenced in the
+   [_Vimsec M365 Security Configuration Baseline for Exchange Online_](./exo.md#msexo161v1) which are:
 
    a. **Suspicious email sending patterns detected.**
 
@@ -843,7 +813,7 @@ Microsoft Purview Audit (Premium) logging SHALL be enabled for ALL users.
 Audit logs SHALL be maintained for at least the minimum duration dictated by OMB M-21-31.
 
 <!--Policy: MS.DEFENDER.6.3v1; Criticality: SHALL -->
-- _Rationale:_ Audit logs may no longer be available when needed if they are not retained for a sufficient time. Increased log retention time gives an agency the necessary visibility to investigate incidents that occurred some time ago.
+- _Rationale:_ Audit logs may no longer be available when needed if they are not retained for a sufficient time. Increased log retention time gives an company the necessary visibility to investigate incidents that occurred some time ago.
 - _Last modified:_ June 2023
 - _Note_: Purview Audit (Premium) provides a default audit log retention policy,
           retaining Exchange Online, SharePoint Online, OneDrive for
@@ -909,7 +879,7 @@ Microsoft
 Learn.](https://learn.microsoft.com/en-us/purview/audit-premium-setup?view=o365-worldwide)
 
 #### MS.DEFENDER.6.3v1 Instructions
-To create one or more custom audit retention policies, if the default retention policy is not sufficient for agency needs, follow [Create an audit log retention policy](https://learn.microsoft.com/en-us/purview/audit-log-retention-policies?view=o365-worldwide#create-an-audit-log-retention-policy) instructions.
+To create one or more custom audit retention policies, if the default retention policy is not sufficient for company needs, follow [Create an audit log retention policy](https://learn.microsoft.com/en-us/purview/audit-log-retention-policies?view=o365-worldwide#create-an-audit-log-retention-policy) instructions.
 Ensure the duration selected in the retention policies is at least one year,
 in accordance with OMB M-21-31.
 

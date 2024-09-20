@@ -1,54 +1,24 @@
-**`TLP:CLEAR`**
+# Vimsec M365 Security Configuration Baseline for Exchange Online
 
-# CISA M365 Security Configuration Baseline for Exchange Online
+Microsoft 365 (M365) Exchange Online is a cloud-based messaging platform that provides users with easy access to their email and supports organisational meetings, contacts, and calendars. This Secure Configuration Baseline (SCB) provides specific policies to strengthen Exchange Online security.
 
-Microsoft 365 (M365) Exchange Online is a cloud-based messaging platform that gives users easy access to their email and supports organizational meetings, contacts, and calendars. This Secure Configuration Baseline (SCB) provides specific policies to strengthen Exchange Online security.
+Many admin controls for Exchange Online are found in the **Exchange admin center**. However, several of the security features for Exchange Online are shared between Microsoft products and are configured in either the **Microsoft 365 Defender portal** or **Microsoft Purview compliance portal**. Generally speaking, the use of Microsoft Defender is not strictly required for this baseline. When noted, alternative products may be used in place of Defender, on the condition that they fulfil the required baseline settings.
 
-Many admin controls for Exchange Online are found in the **Exchange admin center**.
-However, several of the security features for Exchange Online are shared between Microsoft
-products and are configured in either the **Microsoft 365 Defender portal**
-or **Microsoft Purview compliance portal**. Generally
-speaking, the use of Microsoft Defender is not strictly required for
-this baseline. When noted, alternative products may be used in lieu of
-Defender, on the condition that they fulfill these required baseline
-settings.
+This document outlines an industry-standard security benchmark utilising security best practice guidelines from the US Government and CIS Benchmarks. These guidelines are designed to help organisations secure information assets stored within M365 cloud business application environments through consistent, effective, and manageable security configurations. Every organisation has different threat models and risk tolerances, and these baselines allow for flexibility in addressing those unique requirements.
 
-The Secure Cloud Business Applications (SCuBA) project run by the Cybersecurity and Infrastructure Security Agency (CISA) provides guidance and capabilities to secure federal civilian executive branch (FCEB) agencies' cloud business application environments and protect federal information that is created, accessed, shared, and stored in those environments.
+The information in this document is provided "as is" for informational purposes only. Vimsec does not endorse any commercial product or service, including any subjects of analysis. Any reference to specific commercial entities, products, processes, or services by service mark, trademark, manufacturer, or otherwise does not constitute or imply endorsement, recommendation, or favouritism by Vimsec. This document does not address, ensure compliance with, or supersede any law, regulation, or other authority. Organisations are responsible for complying with any record-keeping, privacy, and other laws that may apply to the use of technology. This document is not intended to, and does not, create any right or benefit for anyone.
 
-The CISA SCuBA SCBs for M365 help secure federal information assets stored within M365 cloud business application environments through consistent, effective, and manageable security configurations. CISA created baselines tailored to the federal government's threats and risk tolerance with the knowledge that every organization has different threat models and risk tolerance. Non-governmental organizations may also find value in applying these baselines to reduce risks.
+## Licence Compliance and Copyright
 
-The information in this document is provided "as is" for INFORMATIONAL PURPOSES ONLY. CISA does not endorse any commercial product or service, including any subjects of analysis. Any reference to specific commercial entities or commercial products, processes, or services by service mark, trademark, manufacturer, or otherwise, does not constitute or imply endorsement, recommendation, or favoritism by CISA. This document does not address, ensure compliance with, or supersede any law, regulation, or other authority. Entities are responsible for complying with any recordkeeping, privacy, and other laws that may apply to the use of technology. This document is not intended to, and does not, create any right or benefit for anyone against the United States, its departments, agencies, or entities, its officers, employees, or agents, or any other person.
-
-> This document is marked TLP:CLEAR. Recipients may share this information without restriction. Information is subject to standard copyright rules. For more information on the Traffic Light Protocol, see https://www.cisa.gov/tlp.
-
-## License Compliance and Copyright
-
-Portions of this document are adapted from documents in Microsoft's
-[M365](https://github.com/MicrosoftDocs/microsoft-365-docs/blob/public/LICENSE)
-and
-[Azure](https://github.com/MicrosoftDocs/azure-docs/blob/main/LICENSE)
-GitHub repositories. The respective documents are subject to copyright
-and are adapted under the terms of the Creative Commons Attribution 4.0
-International license. Sources are linked throughout this
-document. The United States government has adapted selections of these
-documents to develop innovative and scalable configuration standards to
-strengthen the security of widely used cloud-based software services.
+Portions of this document are adapted from documents in Microsoft's [M365](https://github.com/MicrosoftDocs/microsoft-365-docs/blob/public/LICENSE) and [Azure](https://github.com/MicrosoftDocs/azure-docs/blob/main/LICENSE) GitHub repositories. The respective documents are subject to copyright and are adapted under the terms of the Creative Commons Attribution 4.0 International license. Sources are linked throughout this document. The United States government has adapted selections of these documents to develop innovative and scalable  configuration standards to strengthen the security of widely used cloud-based software services.
 
 ## Assumptions
 
-The **License Requirements** sections of this document assume the
-organization is using an [M365
-E3](https://www.microsoft.com/en-us/microsoft-365/compare-microsoft-365-enterprise-plans)
-or [G3](https://www.microsoft.com/en-us/microsoft-365/government)
-license level at a minimum. Therefore, only licenses not included in E3/G3 are
-listed.
+The **Licence Requirements** sections of this document assume the organisation is using an [M365 E3](https://www.microsoft.com/en-us/microsoft-365/compare-microsoft-365-enterprise-plans) or [G3](https://www.microsoft.com/en-us/microsoft-365/government) licence level at a minimum. Therefore, only licences not included in E3/G3 are listed.
 
 ## Key Terminology
 
-The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
-"SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
-interpreted as described in
-[RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
 
 # Baseline Policies
 
@@ -66,7 +36,7 @@ Automatic forwarding to external domains SHALL be disabled.
 - _Rationale:_ Adversaries can use automatic forwarding to gain
 persistent access to a victim's email. Disabling forwarding to
 external domains prevents this technique when the adversary is
-external to the organization but does not impede legitimate
+external to the organisation but does not impede legitimate
 internal forwarding.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
@@ -81,7 +51,7 @@ internal forwarding.
   Microsoft
   Learn](https://learn.microsoft.com/en-us/exchange/mail-flow-best-practices/remote-domains/remote-domains#reducing-or-increasing-information-flow-to-another-company)
 
-### License Requirements
+### Licence Requirements
 
 - N/A
 
@@ -110,9 +80,9 @@ The Sender Policy Framework (SPF) is a mechanism allowing domain
 administrators to specify which IP addresses are explicitly approved to
 send email on behalf of the domain, facilitating detection of spoofed
 emails. SPF is not configured through the Exchange admin center, but
-rather via Domain Name System (DNS) records hosted by the agency's
-domain. Thus, the exact steps needed to set up SPF vary from agency to
-agency, but Microsoft's documentation provides some helpful starting
+rather via Domain Name System (DNS) records hosted by the company's
+domain. Thus, the exact steps needed to set up SPF vary from company to
+company, but Microsoft's documentation provides some helpful starting
 points.
 
 ### Policies
@@ -122,8 +92,7 @@ An SPF policy SHALL be published for each domain that fails all non-approved sen
 
 <!--Policy: MS.EXO.2.1v1; Criticality: SHALL -->
 - _Rationale:_ An adversary may modify the `FROM` field
-of an email such that it appears to be a legitimate email sent by an
-agency, facilitating phishing attacks. Publishing an SPF policy for each agency domain mitigates forged `FROM` fields by providing a means for recipients to detect emails spoofed in this way.  SPF is required for FCEB departments and agencies by Binding Operational Directive (BOD) 18-01, "Enhance Email and Web Security".
+of an email such that it appears to be a legitimate email sent by a company, facilitating phishing attacks. Publishing an SPF policy for each company domain mitigates forged `FROM` fields by providing a means for recipients to detect emails spoofed in this way.  SPF is required for FCEB departments and agencies by Binding Operational Directive (BOD) 18-01, "Enhance Email and Web Security".
 - _Last modified:_ March 2024
 - _Note:_ SPF defines two different "fail" mechanisms: fail (indicated by `-`, sometimes referred to as hardfail) and softfail (indicated by `~`). Fail, as used in this baseline policy, refers to hardfail (i.e., `-`).
 - _MITRE ATT&CK TTP Mapping:_
@@ -146,18 +115,18 @@ agency, facilitating phishing attacks. Publishing an SPF policy for each agency 
   spoofing \| Microsoft
   Learn](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/email-authentication-anti-spoofing?view=o365-worldwide)
 
-### License Requirements
+### Licence Requirements
 
 - N/A
 
 ### Implementation
 
 #### MS.EXO.2.2v2 Instructions
-First, identify any approved senders specific to your agency, e.g., any on-premises mail servers. SPF allows you to indicate approved senders by IP address or CIDR range. However, note that SPF allows you to [include](https://www.rfc-editor.org/rfc/rfc7208#section-5.2) the IP addresses indicated by a separate SPF policy, referred to by domain name. See [External DNS records required for SPF](https://learn.microsoft.com/en-us/microsoft-365/enterprise/external-domain-name-system-records?view=o365-worldwide#external-dns-records-required-for-spf) for inclusions required for M365 to send email on behalf of your domain.
+First, identify any approved senders specific to your company, e.g., any on-premises mail servers. SPF allows you to indicate approved senders by IP address or CIDR range. However, note that SPF allows you to [include](https://www.rfc-editor.org/rfc/rfc7208#section-5.2) the IP addresses indicated by a separate SPF policy, referred to by domain name. See [External DNS records required for SPF](https://learn.microsoft.com/en-us/microsoft-365/enterprise/external-domain-name-system-records?view=o365-worldwide#external-dns-records-required-for-spf) for inclusions required for M365 to send email on behalf of your domain.
 
 SPF is not configured through the Exchange admin center, but rather via
-DNS records hosted by the agency's domain. Thus, the exact steps needed
-to set up SPF varies from agency to agency. See [Add or edit an SPF TXT record to help prevent email spam (Outlook, Exchange Online) \| Microsoft Learn](https://learn.microsoft.com/en-us/microsoft-365/admin/get-help-with-domains/create-dns-records-at-any-dns-hosting-provider?view=o365-worldwide#add-or-edit-an-spf-txt-record-to-help-prevent-email-spam-outlook-exchange-online) for more details.
+DNS records hosted by the company's domain. Thus, the exact steps needed
+to set up SPF varies from company to company. See [Add or edit an SPF TXT record to help prevent email spam (Outlook, Exchange Online) \| Microsoft Learn](https://learn.microsoft.com/en-us/microsoft-365/admin/get-help-with-domains/create-dns-records-at-any-dns-hosting-provider?view=o365-worldwide#add-or-edit-an-spf-txt-record-to-help-prevent-email-spam-outlook-exchange-online) for more details.
 
 To test your SPF configuration, consider using a web-based tool, such as
 those listed under [How can I validate SPF records for my domain? \| Microsoft Learn](https://learn.microsoft.com/en-us/microsoft-365/admin/setup/domains-faq?view=o365-worldwide#how-can-i-validate-spf-records-for-my-domain).
@@ -170,7 +139,7 @@ Resolve-DnsName example.onmicrosoft.com txt
 
 If SPF is configured, you will see a response resembling `v=spf1 include:spf.protection.outlook.com -all`
 returned; though by necessity, the contents of the SPF
-policy may vary by agency. In this example, the SPF policy indicates
+policy may vary by company. In this example, the SPF policy indicates
 the IP addresses listed by the policy for "spf.protection.outlook.com" are
 the only approved senders for "example.onmicrosoft.com." These IPs can be determined
 via an additional SPF lookup, this time for "spf.protection.outlook.com." Ensure the IP addresses listed as approved senders for your domains are correct. Additionally, ensure that each policy either ends in `-all` or [redirects](https://www.rfc-editor.org/rfc/rfc7208#section-6.1) to one that does; this directive indicates that all IPs that don't match the policy should fail. See [SPF TXT record syntax for Microsoft 365 \| Microsoft Learn](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/email-authentication-anti-spoofing?view=o365-worldwide#spf-txt-record-syntax-for-microsoft-365) for a more in-depth discussion
@@ -181,7 +150,7 @@ of SPF record syntax.
 DomainKeys Identified Mail (DKIM) allows digital signatures to be added
 to email messages in the message header, providing a layer of both
 authenticity and integrity to emails. As with SPF, DKIM relies on DNS
-records; thus, its deployment depends on how an agency manages its DNS.
+records; thus, its deployment depends on how an company manages its DNS.
 Exchange Online Protection (EOP) features include DKIM signing capabilities.
 
 ### Policies
@@ -192,7 +161,7 @@ DKIM SHOULD be enabled for all domains.
 <!--Policy: MS.EXO.3.1v1; Criticality: SHOULD -->
 - _Rationale:_ An adversary may modify the `FROM` field
 of an email such that it appears to be a legitimate email sent by an
-agency, facilitating phishing attacks. Enabling DKIM is another means for
+company, facilitating phishing attacks. Enabling DKIM is another means for
 recipients to detect spoofed emails and verify the integrity of email content.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
@@ -218,7 +187,7 @@ recipients to detect spoofed emails and verify the integrity of email content.
 - [What is EOP? \| Microsoft
   Learn](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/eop-faq?view=o365-worldwide#what-is-eop-)
 
-### License Requirements
+### Licence Requirements
 
 - N/A
 
@@ -279,12 +248,12 @@ Including <reports@dmarc.cyber.dhs.gov> as a point of contact for these reports 
   - [T1562: Impair Defenses](https://attack.mitre.org/techniques/T1562/)
 
 #### MS.EXO.4.4v1
-An agency point of contact SHOULD be included for aggregate and failure reports.
+An company point of contact SHOULD be included for aggregate and failure reports.
 
 <!--Policy: MS.EXO.4.4v1; Criticality: SHOULD -->
 - _Rationale:_ Email spoofing attempts are not inherently visible to domain
 owners. DMARC provides a mechanism to receive reports of spoofing attempts.
-Including an agency point of contact gives the agency insight into attempts
+Including an company point of contact gives the company insight into attempts
 to spoof their domains.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
@@ -307,7 +276,7 @@ to spoof their domains.
 - [How Office 365 handles outbound email that fails DMARC \| Microsoft
   Learn](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/email-authentication-dmarc-configure?view=o365-worldwide#how-microsoft-365-handles-inbound-email-that-fails-dmarc)
 
-### License Requirements
+### Licence Requirements
 
 - N/A
 
@@ -315,8 +284,8 @@ to spoof their domains.
 
 #### MS.EXO.4.1v1 Instructions
 DMARC is not configured through the Exchange admin center, but rather via
-DNS records hosted by the agency's domain. As such, implementation varies
-depending on how an agency manages its DNS records. See [Form the DMARC TXT record for your domain \| Microsoft
+DNS records hosted by the company's domain. As such, implementation varies
+depending on how an company manages its DNS records. See [Form the DMARC TXT record for your domain \| Microsoft
 Learn](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-security/email-authentication-dmarc-configure?view=o365-worldwide#step-4-form-the-dmarc-txt-record-for-your-domain)
 for Microsoft guidance.
 
@@ -335,7 +304,7 @@ Resolve-DnsName _dmarc.example.com txt
 
 If DMARC is configured, a response resembling `v=DMARC1; p=reject; pct=100; rua=mailto:reports@dmarc.cyber.dhs.gov, mailto:reports@example.com; ruf=mailto:reports@example.com`
 will be returned, though by necessity, the contents of the record will vary
-by agency. In this example, the policy indicates all emails failing the
+by company. In this example, the policy indicates all emails failing the
 SPF/DKIM checks are to be rejected and aggregate reports sent to
 reports@dmarc.cyber.dhs.gov and reports@example.com. Failure reports will be
 sent to reports@example.com.
@@ -349,9 +318,9 @@ as one of the emails for the RUA field.
 
 #### MS.EXO.4.4v1 Instructions
 See [MS.EXO.4.1v1 Instructions](#msexo41v1-instructions) for an overview of how to publish and check a DMARC record. Ensure the record published includes:
-- A point of contact specific to your agency in the RUA field.
+- A point of contact specific to your company in the RUA field.
 - <reports@dmarc.cyber.dhs.gov> as one of the emails in the RUA field.
-- One or more agency-defined points of contact in the RUF field.
+- One or more company-defined points of contact in the RUF field.
 
 ## 5. Simple Mail Transfer Protocol Authentication
 
@@ -380,7 +349,7 @@ least functionality.
   Exchange Online \| Microsoft
   Learn](https://learn.microsoft.com/en-us/exchange/clients-and-mobile-in-exchange-online/authenticated-client-smtp-submission)
 
-### License Requirements
+### Licence Requirements
 
 - N/A
 
@@ -388,13 +357,13 @@ least functionality.
 
 #### MS.EXO.5.1v1 Instructions
 
-To disable SMTP AUTH for the organization:
+To disable SMTP AUTH for the organisation:
 
 1. Sign in to the **Exchange admin center**.
 
 2. On the left hand pane, select **Settings**; then from the settings list, select **Mail Flow**.
 
-3. Make sure the setting **Turn off SMTP AUTH protocol for your organization** is checked.
+3. Make sure the setting **Turn off SMTP AUTH protocol for your organisation** is checked.
 
 ## 6. Calendar and Contact Sharing
 
@@ -432,13 +401,13 @@ for legitimate use as needed.
 - [Sharing in Exchange Online \| Microsoft
   Learn](https://learn.microsoft.com/en-us/exchange/sharing/sharing)
 
-- [Organization relationships in Exchange Online \| Microsoft
-  Learn](https://learn.microsoft.com/en-us/exchange/sharing/organization-relationships/organization-relationships)
+- [Organisation relationships in Exchange Online \| Microsoft
+  Learn](https://learn.microsoft.com/en-us/exchange/sharing/organisation-relationships/organisation-relationships)
 
 - [Sharing policies in Exchange Online \| Microsoft
   Learn](https://learn.microsoft.com/en-us/exchange/sharing/sharing-policies/sharing-policies)
 
-### License Requirements
+### Licence Requirements
 
 - N/A
 
@@ -449,7 +418,7 @@ To restrict sharing with all domains:
 
 1. Sign in to the **Exchange admin center**.
 
-2. On the left-hand pane under **Organization**, select **Sharing**.
+2. On the left-hand pane under **Organisation**, select **Sharing**.
 
 3. Select **Individual Sharing**.
 
@@ -474,7 +443,7 @@ Mail flow rules allow incoming email modification, such that email from external
 External sender warnings SHALL be implemented.
 
 <!--Policy: MS.EXO.7.1v1; Criticality: SHALL -->
-- _Rationale:_ Phishing is an ever-present threat. Alerting users when email originates from outside their organization can encourage them to exercise increased caution, especially if an email is one they expected from an internal sender.
+- _Rationale:_ Phishing is an ever-present threat. Alerting users when email originates from outside their organisation can encourage them to exercise increased caution, especially if an email is one they expected from an internal sender.
 - _Last modified:_ June 2023
 
 ### Resources
@@ -490,7 +459,7 @@ External sender warnings SHALL be implemented.
   \|
   CISA](https://www.cisa.gov/sites/default/files/publications/CISA_Insights_Actions_to_Counter_Email-Based_Attacks_on_Election-Related_S508C.pdf)
 
-### License Requirements
+### Licence Requirements
 
 - N/A
 
@@ -511,7 +480,7 @@ To create a mail flow rule to produce external sender warnings:
 
 6.  Under **Apply this rule if…,** select **The sender is external/internal**.
 
-7.  Under **select sender location**, select **Outside the organization**, then click **OK**.
+7.  Under **select sender location**, select **Outside the organisation**, then click **OK**.
 
 8.  Under **Do the following…,** select **Prepend the subject of the message with…**.
 
@@ -540,7 +509,7 @@ forms an integral part of securing Microsoft Exchange Online. There are
 several commercial DLP solutions available that document support for
 M365. Microsoft itself offer DLP services, controlled within the Microsoft Purview
 compliance portal. Agencies may select any service that fits their needs and meets
-the requirements outlined in this baseline setting. The DLP solution selected by an agency
+the requirements outlined in this baseline setting. The DLP solution selected by an company
 should offer services comparable to those offered by Microsoft.
 
 Though use of Microsoft's DLP solution is not strictly
@@ -554,7 +523,7 @@ required, guidance for configuring Microsoft's DLP solution can be found in the 
 A DLP solution SHALL be used.
 
 <!--Policy: MS.EXO.8.1v2; Criticality: SHALL -->
-- _Rationale:_ Users may inadvertently disclose sensitive information to unauthorized individuals. A DLP solution may detect the presence of sensitive information in Exchange Online and block access to unauthorized entities.
+- _Rationale:_ Users may inadvertently disclose sensitive information to unauthorised individuals. A DLP solution may detect the presence of sensitive information in Exchange Online and block access to unauthorised entities.
 - _Last modified:_ May 2024
 - _MITRE ATT&CK TTP Mapping:_
   - [T1567: Exfiltration Over Web Service](https://attack.mitre.org/techniques/T1567/)
@@ -563,10 +532,10 @@ A DLP solution SHALL be used.
 
 
 #### MS.EXO.8.2v2
-The DLP solution SHALL protect personally identifiable information (PII) and sensitive information, as defined by the agency.
+The DLP solution SHALL protect personally identifiable information (PII) and sensitive information, as defined by the company.
 
 <!--Policy: MS.EXO.8.2v2; Criticality: SHALL -->
-- _Rationale:_ Users may inadvertently share sensitive information with others who should not have access to it. Data loss prevention policies provide a way for agencies to detect and prevent unauthorized disclosures.
+- _Rationale:_ Users may inadvertently share sensitive information with others who should not have access to it. Data loss prevention policies provide a way for agencies to detect and prevent unauthorised disclosures.
 - _Last modified:_ May 2024
 - _MITRE ATT&CK TTP Mapping:_
   - [T1567: Exfiltration Over Web Service](https://attack.mitre.org/techniques/T1567/)
@@ -580,7 +549,7 @@ The DLP solution SHALL protect personally identifiable information (PII) and sen
 The selected DLP solution SHOULD offer services comparable to the native DLP solution offered by Microsoft.
 
 <!--Policy: MS.EXO.8.3v1; Criticality: SHOULD -->
-- _Rationale:_ Any alternative DLP solution should be able to detect sensitive information in Exchange Online and block access to unauthorized entities.
+- _Rationale:_ Any alternative DLP solution should be able to detect sensitive information in Exchange Online and block access to unauthorised entities.
 - _Last modified:_ May 2024
 - _MITRE ATT&CK TTP Mapping:_
   - [T1567: Exfiltration Over Web Service](https://attack.mitre.org/techniques/T1567/)
@@ -592,7 +561,7 @@ The selected DLP solution SHOULD offer services comparable to the native DLP sol
 At a minimum, the DLP solution SHALL restrict sharing credit card numbers, U.S. Individual Taxpayer Identification Numbers (ITIN), and U.S. Social Security numbers (SSN) via email.
 
 <!--Policy: MS.EXO.8.4v1; Criticality: SHALL -->
-- _Rationale:_ Users may inadvertently share sensitive information with others who should not have access to it. Data loss prevention policies provide a way for agencies to detect and prevent unauthorized disclosures.
+- _Rationale:_ Users may inadvertently share sensitive information with others who should not have access to it. Data loss prevention policies provide a way for agencies to detect and prevent unauthorised disclosures.
 - _Last modified:_ May 2024
 - _MITRE ATT&CK TTP Mapping:_
   - [T1567: Exfiltration Over Web Service](https://attack.mitre.org/techniques/T1567/)
@@ -606,7 +575,7 @@ At a minimum, the DLP solution SHALL restrict sharing credit card numbers, U.S. 
 
 - None
 
-### License Requirements
+### Licence Requirements
 
 - N/A
 
@@ -614,17 +583,17 @@ At a minimum, the DLP solution SHALL restrict sharing credit card numbers, U.S. 
 
 #### MS.EXO.8.1v2 Instructions
 
-Any product meeting the requirements outlined in this baseline policy may be used. If the agency uses Microsoft Defender, see the following implementation steps for [DLP](./defender.md#implementation-3) for additional guidance.
+Any product meeting the requirements outlined in this baseline policy may be used. If the company uses Microsoft Defender, see the following implementation steps for [DLP](./defender.md#implementation-3) for additional guidance.
 
 #### MS.EXO.8.2v2 Instructions
-Any product meeting the requirements outlined in this baseline policy may be used. If the agency uses Microsoft Defender, see the following implementation steps for [protecting PII](./defender.md#msdefender41v1-instructions) for additional guidance.
+Any product meeting the requirements outlined in this baseline policy may be used. If the company uses Microsoft Defender, see the following implementation steps for [protecting PII](./defender.md#msdefender41v1-instructions) for additional guidance.
 
 #### MS.EXO.8.3v1 Instructions
-Any product meeting the requirements outlined in this baseline policy may be used. If the agency uses Microsoft Defender, see the following implementation steps for [DLP](./defender.md#implementation-3) for additional guidance.
+Any product meeting the requirements outlined in this baseline policy may be used. If the company uses Microsoft Defender, see the following implementation steps for [DLP](./defender.md#implementation-3) for additional guidance.
 
 
 #### MS.EXO.8.4v1 Instructions
-Any product meeting the requirements outlined in this baseline policy may be used. If the agency uses Microsoft Defender, see the following implementation steps for [protecting PII](./defender.md#msdefender41v1-instructions) for additional guidance.
+Any product meeting the requirements outlined in this baseline policy may be used. If the company uses Microsoft Defender, see the following implementation steps for [protecting PII](./defender.md#msdefender41v1-instructions) for additional guidance.
 
 ## 9. Attachment File Type
 
@@ -633,7 +602,7 @@ allowing them to be sent via email outweigh any potential benefits.
 Some services, such as the Common Attachment Filter of Microsoft
 Defender, filter emails based on the attachment file types. Using
 Microsoft Defender for this purpose is not required. However,
-the solution selected by an agency should offer services comparable to
+the solution selected by an company should offer services comparable to
 those offered by Microsoft.
 
 Though using Microsoft Defender's solution is not strictly required for
@@ -677,7 +646,7 @@ Disallowed file types SHALL be determined and enforced.
 - _Rationale:_ Malicious attachments often take the form of click-to-run files,
 though other file types can contain malicious content as well. As such,
 determining the full list of file types to block is left to each
-organization, to be made in accordance with their risk tolerance.
+organisation, to be made in accordance with their risk tolerance.
 - _Last modified:_ May 2024
 - _MITRE ATT&CK TTP Mapping:_
   - [T1566: Phishing](https://attack.mitre.org/techniques/T1566/)
@@ -715,7 +684,7 @@ Blocking a list of common executable files helps mitigate the risk of adversaria
 
 - [Common attachments filter in anti-malware policies \| Microsoft Learn](https://learn.microsoft.com/en-us/defender-office-365/anti-malware-protection-about#common-attachments-filter-in-anti-malware-policies)
 
-### License Requirements
+### Licence Requirements
 
 - N/A
 
@@ -723,35 +692,35 @@ Blocking a list of common executable files helps mitigate the risk of adversaria
 
 #### MS.EXO.9.1v2 Instructions
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#implementation), which
 include email filtering based on attachment file type.
 
 #### MS.EXO.9.2v1 Instructions
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#implementation), which
 attempt to determine the true file type and assess the file extension.
 
 #### MS.EXO.9.3v2 Instructions
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#implementation), which
 disallow click-to-run file types.
 
 #### MS.EXO.9.4v1 Instructions
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#implementation), which
 disallow click-to-run file types.
 
 #### MS.EXO.9.5v1 Instructions
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#implementation), which
 disallow click-to-run file types.
@@ -766,8 +735,8 @@ Because malware detections may be updated, it is also important that emails
 that were already delivered to users are also scanned and removed.
 
 Using Microsoft Defender for this purpose is not required. However,
-the solution selected by an agency should offer services comparable to
-those offered by Microsoft. If the agency uses Microsoft Defender to
+the solution selected by an company should offer services comparable to
+those offered by Microsoft. If the company uses Microsoft Defender to
 implement malware scanning, see the following policies of the CISA M365 Security Configuration Baseline for Defender for Office 365 for additional guidance.
 
 - [MS.DEFENDER.1.2v1 \| CISA M365 Security Configuration Baseline for Defender for Office 365](./defender.md#msdefender12v1)
@@ -823,21 +792,21 @@ Email scanning SHALL be capable of reviewing emails after delivery.
 
 #### MS.EXO.10.1v1 Instructions
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#implementation), which
 include anti-malware protection.
 
 #### MS.EXO.10.2v1 Instructions
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#implementation), which
 include anti-malware protection to quarantine malware in email.
 
 #### MS.EXO.10.3v1 Instructions
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#implementation), which
 include zero-hour auto purge (ZAP) to retroactively detect malware in messages
@@ -858,7 +827,7 @@ including the following:
 - Artificial intelligence (AI)-based tools.
 
 Any product meeting the requirements outlined in this baseline
-policy group may be used. If the agency uses Exchange Online Protection
+policy group may be used. If the company uses Exchange Online Protection
 (EOP), which is included in all Microsoft 365 subscriptions containing
 Exchange Online mailboxes, see the following policy and section of the CISA
 M365 Security Configuration Baseline for Defender for Office 365.
@@ -924,20 +893,20 @@ The phishing protection solution SHOULD include an AI-based phishing detection t
 
 #### MS.EXO.11.1v1 Instructions
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling impersonation protection](./defender.md#msdefender21v1-instructions).
 
 #### MS.EXO.11.2v1 Instructions
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#msdefender12v1) which
 include user safety tips to warn users.
 
 #### MS.EXO.11.3v1 Instructions
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#msdefender13v1) which
 include mailbox intelligence for detecting phishing attacks using AI.
@@ -1109,12 +1078,12 @@ To enable mailbox auditing by default for your organization via PowerShell:
 ## 14. Inbound Anti-Spam Protections
 
 Junk email, or spam, can clutter user mailboxes and hamper communications
-across an agency. Implementing a spam filter helps to identify inbound spam and
+across an company. Implementing a spam filter helps to identify inbound spam and
 quarantine or move those messages. Microsoft Defender includes several
 capabilities for protecting against inbound spam emails. Using Microsoft
 Defender is not strictly required for this purpose; any product that
 fulfills the requirements outlined in this baseline policy group may be
-used. If the agency uses Microsoft Defender to meet this baseline policy
+used. If the company uses Microsoft Defender to meet this baseline policy
 group, see the following policy of the CISA M365 Security Configuration
 Baseline for Defender for Office 365.
 
@@ -1179,7 +1148,7 @@ If a third-party party filtering solution is used, the solution SHOULD offer ser
 #### MS.EXO.14.1v2 Instructions
 
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#msdefender12v1), which
 include spam filtering.
@@ -1187,7 +1156,7 @@ include spam filtering.
 #### MS.EXO.14.2v1 Instructions
 
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#msdefender12v1), which
 include spam filtering that moves high confidence spam to either the junk
@@ -1196,7 +1165,7 @@ include spam filtering that moves high confidence spam to either the junk
 #### MS.EXO.14.3v1 Instructions
 
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#msdefender12v1), which do not
 include any allowed sender domains by default.
@@ -1204,7 +1173,7 @@ include any allowed sender domains by default.
 #### MS.EXO.14.4v1 Instructions
 
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender, see the following
+used. If the company uses Microsoft Defender, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#msdefender12v1), which
 include spam filtering.
@@ -1233,7 +1202,7 @@ If all checks pass, the user is redirected to the original URL.
 Microsoft Defender for Office 365 includes link scanning capabilities.
 Using Microsoft Defender is not strictly required for this purpose;
 any product fulfilling the requirements outlined in this baseline policy group may be used.
-If the agency uses Microsoft Defender for Office 365 to meet this baseline policy group, see the following policy of the CISA M365 Security Configuration Baseline for Defender for Office 365 for additional guidance.
+If the company uses Microsoft Defender for Office 365 to meet this baseline policy group, see the following policy of the CISA M365 Security Configuration Baseline for Defender for Office 365 for additional guidance.
 
 - [MS.DEFENDER.1.3v1 \| CISA M365 Security Configuration Baseline for Defender for Office 365](./defender.md#msdefender13v1).
   - All users SHALL be added to Defender for Office 365 Protection in either the standard or strict preset security policy.
@@ -1285,7 +1254,7 @@ User click tracking SHOULD be enabled.
 #### MS.EXO.15.1v1 Instructions
 
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender for Office 365, see the following
+used. If the company uses Microsoft Defender for Office 365, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#msdefender13v1), which
 include Safe Links protections to scan URLs in email messages against a list
@@ -1294,7 +1263,7 @@ of known, malicious links.
 #### MS.EXO.15.2v1 Instructions
 
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender for Office 365, see the following
+used. If the company uses Microsoft Defender for Office 365, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#msdefender13v1), which
 include Safe Links protections to scan links to files for malware.
@@ -1302,7 +1271,7 @@ include Safe Links protections to scan links to files for malware.
 #### MS.EXO.15.3v1 Instructions
 
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft Defender for Office 365, see the following
+used. If the company uses Microsoft Defender for Office 365, see the following
 implementation steps for
 [enabling preset security policies](./defender.md#msdefender13v1), which
 include Safe Links click protections to track user clicks on links in email.
@@ -1317,7 +1286,7 @@ security incidents.
 
 Using Microsoft 365 alert policies is not strictly required for this purpose;
 any product fulfilling the requirements outlined in this baseline policy
-group may be used. If the agency uses Microsoft 365 alert policies, this
+group may be used. If the company uses Microsoft 365 alert policies, this
 includes several prebuilt alert policies, many of which pertain to Exchange
 Online. Guidance for configuring alerts in Microsoft 365 is
 given in the following section of the CISA M365 Security Configuration Baseline
@@ -1348,7 +1317,7 @@ At a minimum, the following alerts SHALL be enabled:
 - _Rationale:_ Potentially malicious or service impacting events may go
   undetected without a means of detecting these events. Setting up a mechanism
   to alert administrators to events listed above draws attention to them
-  to help minimize impact to users and the agency.
+  to help minimize impact to users and the company.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1078: Valid Accounts](https://attack.mitre.org/techniques/T1078/)
@@ -1364,7 +1333,7 @@ The alerts SHOULD be sent to a monitored address or incorporated into a security
 
 <!--Policy: MS.EXO.16.2v1; Criticality: SHOULD -->
 - _Rationale:_ Suspicious or malicious events, if not resolved promptly, may
-  have a greater impact to users and the agency. Sending alerts to a
+  have a greater impact to users and the company. Sending alerts to a
   monitored email address or SIEM system helps ensure these suspicious or
   malicious events are acted upon in a timely manner to limit overall
   impact.
@@ -1386,14 +1355,14 @@ The alerts SHOULD be sent to a monitored address or incorporated into a security
 #### MS.EXO.16.1v1 Instructions
 
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft 365 alert policies, see the following implementation steps for
+used. If the company uses Microsoft 365 alert policies, see the following implementation steps for
 [enabling alerts](./defender.md#msdefender51v1-instructions) for additional
 guidance.
 
 #### MS.EXO.16.2v1 Instructions
 
 Any product meeting the requirements outlined in this baseline policy may be
-used. If the agency uses Microsoft 365 alert policies, see the following implementation steps to
+used. If the company uses Microsoft 365 alert policies, see the following implementation steps to
 [add email recipients to an alert](./defender.md#msdefender51v1-instructions)
 for additional guidance.
 
@@ -1467,7 +1436,7 @@ Audit logs SHALL be maintained for at least the minimum duration dictated by OMB
 <!--Policy: MS.EXO.17.3v1; Criticality: SHALL -->
 - _Rationale:_ Audit logs may no longer be available when needed if they
 are not retained for a sufficient time.  Increased log retention time
-gives an agency the necessary visibility to investigate incidents that occurred
+gives an company the necessary visibility to investigate incidents that occurred
 some time ago. OMB M-21-13, Appendix C, Table 5 specifically calls out Unified
 Audit Logs in the Cloud Azure log category.
 - _Last modified:_ June 2023
