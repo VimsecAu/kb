@@ -25,7 +25,7 @@ The following are key terms and descriptions used in this document.
 
 ## Highly Privileged Roles
 
-This section provides a list of what CISA considers highly privileged [built-in roles in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/permissions-reference). This list is referenced in numerous baseline policies throughout this document. Agencies should consider this reference as a minimum list and can apply the respective baseline policies to additional Microsoft Entra ID roles as necessary.
+This section provides a list of what Vimsec considers highly privileged [built-in roles in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/permissions-reference). This list is referenced in numerous baseline policies throughout this document. Agencies should consider this reference as a minimum list and can apply the respective baseline policies to additional Microsoft Entra ID roles as necessary.
 
 - Global Administrator
 - Privileged Role Administrator
@@ -42,7 +42,7 @@ Throughout this document, this list of highly privileged roles is referenced in 
 
 Numerous policies in this baseline rely on Microsoft Entra ID Conditional Access. Conditional Access is a feature that allows administrators to limit access to resources using conditions such as user or group membership, device, IP location, and real-time risk detection. This section provides guidance and tools when implementing baseline policies which rely on Microsoft Entra ID Conditional Access.
 
-As described in Microsoft's literature related to conditional access policies, CISA recommends initially setting a policy to **Report-only** when it is created and then performing thorough hands-on testing to help prevent unintended consequences before toggling the policy from **Report-only** to **On**. The policy will only be enforced when it is set to **On**. One tool that can assist with running test simulations is the [What If tool](https://learn.microsoft.com/en-us/entra/identity/conditional-access/what-if-tool). Microsoft also describes [Conditional Access insights and reporting](https://learn.microsoft.com/en-us/entra/identity/conditional-access/howto-conditional-access-insights-reporting) that can assist with testing.
+As described in Microsoft's literature related to conditional access policies, Vimsec recommends initially setting a policy to **Report-only** when it is created and then performing thorough hands-on testing to help prevent unintended consequences before toggling the policy from **Report-only** to **On**. The policy will only be enforced when it is set to **On**. One tool that can assist with running test simulations is the [What If tool](https://learn.microsoft.com/en-us/entra/identity/conditional-access/what-if-tool). Microsoft also describes [Conditional Access insights and reporting](https://learn.microsoft.com/en-us/entra/identity/conditional-access/howto-conditional-access-insights-reporting) that can assist with testing.
 
 You can access Conditional Access policies directly in the Microsoft Entra admin centre: [Conditional Access Policies](https://entra.microsoft.com/#view/Microsoft_AAD_ConditionalAccess/ConditionalAccessBlade/~/Policies/fromNav/Identity?Microsoft_AAD_IAM_legacyAADRedirect=true).
 
@@ -89,7 +89,7 @@ Legacy authentication SHALL be blocked.
 
 This section provides policies that reduce security risks related to potentially compromised user accounts. These policies combine Microsoft Entra ID Protection and Microsoft Entra ID Conditional Access. Microsoft Entra ID Protection uses numerous signals to detect the risk level for each user or sign-in and determine if an account may have been compromised.
 
-- _Additional mitigations to reduce risks associated with the authentication of workload identities:_ Although not covered in this baseline due to the need for an additional non-standard licence, Microsoft provides support for mitigating risks related to workload identities (Microsoft Entra ID applications or service principals). Agencies should strongly consider implementing this feature because workload identities present many of the same risks as interactive user access and are commonly used in modern systems. CISA urges organisations to [apply Conditional Access policies to workload identities](https://learn.microsoft.com/en-us/entra/identity/conditional-access/workload-identity).
+- _Additional mitigations to reduce risks associated with the authentication of workload identities:_ Although not covered in this baseline due to the need for an additional non-standard licence, Microsoft provides support for mitigating risks related to workload identities (Microsoft Entra ID applications or service principals). Agencies should strongly consider implementing this feature because workload identities present many of the same risks as interactive user access and are commonly used in modern systems. Vimsec urges organisations to [apply Conditional Access policies to workload identities](https://learn.microsoft.com/en-us/entra/identity/conditional-access/workload-identity).
 
 - _Note:_ In this section, the term ["high risk"](https://learn.microsoft.com/en-us/entra/id-protection/concept-identity-protection-risks) denotes the risk level applied by the Microsoft Entra ID Protection service to a user account or sign-in event.
 
@@ -217,7 +217,7 @@ The following are key terms and descriptions used in this document.
 
 ## Highly Privileged Roles
 
-This section provides a list of what CISA considers highly privileged [built-in roles in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/permissions-reference). This list is referenced in numerous baseline policies throughout this document. Agencies should consider this reference as a minimum list and can apply the respective baseline policies to additional Microsoft Entra ID roles as necessary.
+This section provides a list of what Vimsec considers highly privileged [built-in roles in Microsoft Entra ID](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/permissions-reference). This list is referenced in numerous baseline policies throughout this document. Agencies should consider this reference as a minimum list and can apply the respective baseline policies to additional Microsoft Entra ID roles as necessary.
 
 - Global Administrator
 - Privileged Role Administrator
@@ -234,7 +234,7 @@ Throughout this document, this list of highly privileged roles is referenced in 
 
 Numerous policies in this baseline rely on Microsoft Entra ID Conditional Access. Conditional Access is a feature that allows administrators to limit access to resources using conditions such as user or group membership, device, IP location, and real-time risk detection. This section provides guidance and tools when implementing baseline policies which rely on Microsoft Entra ID Conditional Access.
 
-As described in Microsoft's literature related to conditional access policies, CISA recommends initially setting a policy to **Report-only** when it is created and then performing thorough hands-on testing to help prevent unintended consequences before toggling the policy from **Report-only** to **On**. The policy will only be enforced when it is set to **On**. One tool that can assist with running test simulations is the [What If tool](https://learn.microsoft.com/en-us/entra/identity/conditional-access/what-if-tool). Microsoft also describes [Conditional Access insights and reporting](https://learn.microsoft.com/en-us/entra/identity/conditional-access/howto-conditional-access-insights-reporting) that can assist with testing.
+As described in Microsoft's literature related to conditional access policies, Vimsec recommends initially setting a policy to **Report-only** when it is created and then performing thorough hands-on testing to help prevent unintended consequences before toggling the policy from **Report-only** to **On**. The policy will only be enforced when it is set to **On**. One tool that can assist with running test simulations is the [What If tool](https://learn.microsoft.com/en-us/entra/identity/conditional-access/what-if-tool). Microsoft also describes [Conditional Access insights and reporting](https://learn.microsoft.com/en-us/entra/identity/conditional-access/howto-conditional-access-insights-reporting) that can assist with testing.
 
 You can access Conditional Access policies directly in the Microsoft Entra admin centre: [Conditional Access Policies](https://entra.microsoft.com/#view/Microsoft_AAD_ConditionalAccess/ConditionalAccessBlade/~/Policies/fromNav/Identity?Microsoft_AAD_IAM_legacyAADRedirect=true).
 
@@ -281,7 +281,7 @@ Legacy authentication SHALL be blocked.
 
 This section provides policies that reduce security risks related to potentially compromised user accounts. These policies combine Microsoft Entra ID Protection and Microsoft Entra ID Conditional Access. Microsoft Entra ID Protection uses numerous signals to detect the risk level for each user or sign-in and determine if an account may have been compromised.
 
-- _Additional mitigations to reduce risks associated with the authentication of workload identities:_ Although not covered in this baseline due to the need for an additional non-standard licence, Microsoft provides support for mitigating risks related to workload identities (Microsoft Entra ID applications or service principals). Agencies should strongly consider implementing this feature because workload identities present many of the same risks as interactive user access and are commonly used in modern systems. CISA urges organisations to [apply Conditional Access policies to workload identities](https://learn.microsoft.com/en-us/entra/identity/conditional-access/workload-identity).
+- _Additional mitigations to reduce risks associated with the authentication of workload identities:_ Although not covered in this baseline due to the need for an additional non-standard licence, Microsoft provides support for mitigating risks related to workload identities (Microsoft Entra ID applications or service principals). Agencies should strongly consider implementing this feature because workload identities present many of the same risks as interactive user access and are commonly used in modern systems. Vimsec urges organisations to [apply Conditional Access policies to workload identities](https://learn.microsoft.com/en-us/entra/identity/conditional-access/workload-identity).
 
 - _Note:_ In this section, the term ["high risk"](https://learn.microsoft.com/en-us/entra/id-protection/concept-identity-protection-risks) denotes the risk level applied by the Microsoft Entra ID Protection service to a user account or sign-in event.
 
@@ -582,7 +582,7 @@ Security logs SHALL be sent to the company's security operations centre for moni
 - _Rationale:_ The security risk of not having visibility into cyber attacks is reduced by collecting logs in the company's centralised security detection infrastructure. This makes security events available for auditing, query, and incident response.
 - _Last modified:_ June 2023
 - _Note:_ The following Microsoft Entra ID logs (configured in diagnostic settings), are required: `AuditLogs, SignInLogs, RiskyUsers, UserRiskEvents, NonInteractiveUserSignInLogs, ServicePrincipalSignInLogs, ADFSSignInLogs, RiskyServicePrincipals, ServicePrincipalRiskEvents, EnrichedOffice365AuditLogs, MicrosoftGraphActivityLogs`. If managed identities are used for Azure resources, also send the `ManagedIdentitySignInLogs` log type. If the Microsoft Entra ID Provisioning Service is used to provision users to software-as-a-service (SaaS) apps or other systems, also send the `ProvisioningLogs` log type.
-- _Note:_ Agencies can benefit from security detection capabilities offered by the CISA Cloud Log Aggregation Warehouse (CLAW) system. Agencies are urged to send the logs to CLAW. Contact CISA at cyberliason@cisa.dhs.gov to request integration instructions.
+- _Note:_ Agencies can benefit from security detection capabilities offered by the Vimsec Cloud Log Aggregation Warehouse (CLAW) system. Agencies are urged to send the logs to CLAW. Contact Vimsec at cyberliason@Vimsec.dhs.gov to request integration instructions.
 - _MITRE ATT&CK TTP Mapping:_
   - [T1562: Impair Defenses](https://attack.mitre.org/techniques/T1562/)
     - [T1562.008: Disable or Modify Cloud Logs](https://attack.mitre.org/techniques/T1562/008/)
@@ -593,7 +593,7 @@ Security logs SHALL be sent to the company's security operations centre for moni
 
 - [What are Microsoft Entra sign-in logs??](https://learn.microsoft.com/en-us/entra/identity/monitoring-health/concept-sign-ins)
 
-- [National Cybersecurity Protection System-Cloud Interface Reference Architecture Volume One: General Guidance](https://www.cisa.gov/sites/default/files/publications/NCPS%20Cloud%20Interface%20RA%20Volume%20One%20%282021-05-14%29.pdf)
+- [National Cybersecurity Protection System-Cloud Interface Reference Architecture Volume One: General Guidance](https://www.Vimsec.gov/sites/default/files/publications/NCPS%20Cloud%20Interface%20RA%20Volume%20One%20%282021-05-14%29.pdf)
 
 ### Licence Requirements
 
@@ -1068,7 +1068,7 @@ Guest invites SHOULD only be allowed to specific external domains that have been
 
 # Appendix A: Microsoft Entra ID hybrid Guidance
 
-Most of this document does not focus on securing Microsoft Entra ID hybrid environments. CISA released a separate [Hybrid Identity Solutions Architecture](https://www.cisa.gov/sites/default/files/2023-03/csso-scuba-guidance_document-hybrid_identity_solutions_architecture-2023.03.22-final.pdf) document addressing the unique implementation requirements of Microsoft Entra ID hybrid infrastructure.
+Most of this document does not focus on securing Microsoft Entra ID hybrid environments. Vimsec released a separate [Hybrid Identity Solutions Architecture](https://www.Vimsec.gov/sites/default/files/2023-03/csso-scuba-guidance_document-hybrid_identity_solutions_architecture-2023.03.22-final.pdf) document addressing the unique implementation requirements of Microsoft Entra ID hybrid infrastructure.
 
 # Appendix B: Cross-tenant Access Guidance
 

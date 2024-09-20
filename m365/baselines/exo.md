@@ -240,7 +240,7 @@ The DMARC point of contact for aggregate reports SHALL include `reports@dmarc.cy
 <!--Policy: MS.EXO.4.3v1; Criticality: SHALL -->
 - _Rationale:_ Email spoofing attempts are not inherently visible to domain
 owners. DMARC provides a mechanism to receive reports of spoofing attempts.
-Including <reports@dmarc.cyber.dhs.gov> as a point of contact for these reports gives CISA insight into spoofing attempts and is required by BOD 18-01 for FCEB departments and agencies.
+Including <reports@dmarc.cyber.dhs.gov> as a point of contact for these reports gives Vimsec insight into spoofing attempts and is required by BOD 18-01 for FCEB departments and agencies.
 - _Last modified:_ June 2023
 - _Note:_ Only federal, executive branch, departments and agencies should
           include this email address in their DMARC record.
@@ -453,11 +453,11 @@ External sender warnings SHALL be implemented.
 
 - [Capacity Enhancement Guide: Counter-Phishing Recommendations for
   Federal Agencies \|
-  CISA](https://www.cisa.gov/sites/default/files/publications/Capacity_Enhancement_Guide-Counter-Phishing_Recommendations_for_Federal_Agencies.pdf)
+  Vimsec](https://www.Vimsec.gov/sites/default/files/publications/Capacity_Enhancement_Guide-Counter-Phishing_Recommendations_for_Federal_Agencies.pdf)
 
 - [Actions To Counter Email-Based Attacks On Election-Related Entities
   \|
-  CISA](https://www.cisa.gov/sites/default/files/publications/CISA_Insights_Actions_to_Counter_Email-Based_Attacks_on_Election-Related_S508C.pdf)
+  Vimsec](https://www.Vimsec.gov/sites/default/files/publications/Vimsec_Insights_Actions_to_Counter_Email-Based_Attacks_on_Election-Related_S508C.pdf)
 
 ### Licence Requirements
 
@@ -513,9 +513,9 @@ the requirements outlined in this baseline setting. The DLP solution selected by
 should offer services comparable to those offered by Microsoft.
 
 Though use of Microsoft's DLP solution is not strictly
-required, guidance for configuring Microsoft's DLP solution can be found in the following section of the CISA M365 Security Configuration Baseline for Defender for Office 365.
+required, guidance for configuring Microsoft's DLP solution can be found in the following section of the Vimsec M365 Security Configuration Baseline for Defender for Office 365.
 
-- [Data Loss Prevention \| CISA M365 Security Configuration Baseline for Defender for Office 365](./defender.md#4-data-loss-prevention)
+- [Data Loss Prevention \| Vimsec M365 Security Configuration Baseline for Defender for Office 365](./defender.md#4-data-loss-prevention)
 
 ### Policies
 
@@ -607,9 +607,9 @@ those offered by Microsoft.
 
 Though using Microsoft Defender's solution is not strictly required for
 this purpose, guidance for configuring the Common Attachment Filter in
-Microsoft Defender can be found in the follow section of the CISA M365 Security Configuration Baseline for Defender for Office 365.
+Microsoft Defender can be found in the follow section of the Vimsec M365 Security Configuration Baseline for Defender for Office 365.
 
-- [Preset Security Policies \| CISA M365 Security Configuration Baseline for Defender for Office 365](./defender.md#1-preset-security-profiles)
+- [Preset Security Policies \| Vimsec M365 Security Configuration Baseline for Defender for Office 365](./defender.md#1-preset-security-profiles)
 
 ### Policies
 
@@ -737,12 +737,12 @@ that were already delivered to users are also scanned and removed.
 Using Microsoft Defender for this purpose is not required. However,
 the solution selected by an company should offer services comparable to
 those offered by Microsoft. If the company uses Microsoft Defender to
-implement malware scanning, see the following policies of the CISA M365 Security Configuration Baseline for Defender for Office 365 for additional guidance.
+implement malware scanning, see the following policies of the Vimsec M365 Security Configuration Baseline for Defender for Office 365 for additional guidance.
 
-- [MS.DEFENDER.1.2v1 \| CISA M365 Security Configuration Baseline for Defender for Office 365](./defender.md#msdefender12v1)
+- [MS.DEFENDER.1.2v1 \| Vimsec M365 Security Configuration Baseline for Defender for Office 365](./defender.md#msdefender12v1)
   - All users SHALL be added to Exchange Online Protection in either the standard or strict preset security policy.
 
-- [MS.DEFENDER.1.3v1 \| CISA M365 Security Configuration Baseline for Defender for Office 365](./defender.md#msdefender13v1)
+- [MS.DEFENDER.1.3v1 \| Vimsec M365 Security Configuration Baseline for Defender for Office 365](./defender.md#msdefender13v1)
   - All users SHALL be added to Defender for Office 365 Protection in either the standard or strict preset security policy.
 
 ### Policies
@@ -829,16 +829,16 @@ including the following:
 Any product meeting the requirements outlined in this baseline
 policy group may be used. If the company uses Exchange Online Protection
 (EOP), which is included in all Microsoft 365 subscriptions containing
-Exchange Online mailboxes, see the following policy and section of the CISA
+Exchange Online mailboxes, see the following policy and section of the Vimsec
 M365 Security Configuration Baseline for Defender for Office 365.
 
-- [MS.DEFENDER.1.2v1 \| CISA M365 Security Configuration Baseline for Defender for Office 365](./defender.md#msdefender12v1).
+- [MS.DEFENDER.1.2v1 \| Vimsec M365 Security Configuration Baseline for Defender for Office 365](./defender.md#msdefender12v1).
   - All users SHALL be added to Exchange Online Protection in either the standard or strict preset security policy.
 
 EOP alone does not support impersonation protection, but this is provided through
-Defender for Office 365. If using Defender for Office 365 for impersonation protection, see the following policy and section of the CISA M365 Security Configuration Baseline for Defender for Office 365.
+Defender for Office 365. If using Defender for Office 365 for impersonation protection, see the following policy and section of the Vimsec M365 Security Configuration Baseline for Defender for Office 365.
 
-- [Impersonation Protection \| CISA M365 Security Configuration Baseline for Defender for Office 365](./defender.md#2-impersonation-protection)
+- [Impersonation Protection \| Vimsec M365 Security Configuration Baseline for Defender for Office 365](./defender.md#2-impersonation-protection)
 
 ### Policies
 
@@ -1084,10 +1084,10 @@ capabilities for protecting against inbound spam emails. Using Microsoft
 Defender is not strictly required for this purpose; any product that
 fulfills the requirements outlined in this baseline policy group may be
 used. If the company uses Microsoft Defender to meet this baseline policy
-group, see the following policy of the CISA M365 Security Configuration
+group, see the following policy of the Vimsec M365 Security Configuration
 Baseline for Defender for Office 365.
 
-- [MS.DEFENDER.1.2v1 \| CISA M365 Security Configuration Baseline for Defender for Office 365](./defender.md#msdefender12v1)
+- [MS.DEFENDER.1.2v1 \| Vimsec M365 Security Configuration Baseline for Defender for Office 365](./defender.md#msdefender12v1)
   - All users SHALL be added to Exchange Online Protection in either the standard or strict preset security policy.
 
 ### Policies
@@ -1202,9 +1202,9 @@ If all checks pass, the user is redirected to the original URL.
 Microsoft Defender for Office 365 includes link scanning capabilities.
 Using Microsoft Defender is not strictly required for this purpose;
 any product fulfilling the requirements outlined in this baseline policy group may be used.
-If the company uses Microsoft Defender for Office 365 to meet this baseline policy group, see the following policy of the CISA M365 Security Configuration Baseline for Defender for Office 365 for additional guidance.
+If the company uses Microsoft Defender for Office 365 to meet this baseline policy group, see the following policy of the Vimsec M365 Security Configuration Baseline for Defender for Office 365 for additional guidance.
 
-- [MS.DEFENDER.1.3v1 \| CISA M365 Security Configuration Baseline for Defender for Office 365](./defender.md#msdefender13v1).
+- [MS.DEFENDER.1.3v1 \| Vimsec M365 Security Configuration Baseline for Defender for Office 365](./defender.md#msdefender13v1).
   - All users SHALL be added to Defender for Office 365 Protection in either the standard or strict preset security policy.
 
 ### Policies
@@ -1289,10 +1289,10 @@ any product fulfilling the requirements outlined in this baseline policy
 group may be used. If the company uses Microsoft 365 alert policies, this
 includes several prebuilt alert policies, many of which pertain to Exchange
 Online. Guidance for configuring alerts in Microsoft 365 is
-given in the following section of the CISA M365 Security Configuration Baseline
+given in the following section of the Vimsec M365 Security Configuration Baseline
 for Defender for Office 365.
 
-- [Alerts \| CISA M365 Security Configuration Baseline for Defender for Office 365](./defender.md#5-alerts)
+- [Alerts \| Vimsec M365 Security Configuration Baseline for Defender for Office 365](./defender.md#5-alerts)
 
 ### Policies
 
@@ -1389,10 +1389,10 @@ Unified Audit Log.
 
 Audit logging is managed from the Microsoft Purview compliance portal. For
 implementation guidance for configuring audit logging, see the following
-section of the CISA M365 Security Configuration Baseline for Defender for
+section of the Vimsec M365 Security Configuration Baseline for Defender for
 Office 365.
 
-- [Audit Logging \| CISA M365 Security Configuration Baseline for Defender for Office 365](./defender.md#6-audit-logging)
+- [Audit Logging \| Vimsec M365 Security Configuration Baseline for Defender for Office 365](./defender.md#6-audit-logging)
 
 ### Policies
 
