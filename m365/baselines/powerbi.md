@@ -789,5 +789,3 @@ disabling public internet access.
 
 > Note:
 > This policy is only applicable if the setting **Allow service principals to use Power BI APIs** is enabled.
-
-**`TLP:CLEAR`**

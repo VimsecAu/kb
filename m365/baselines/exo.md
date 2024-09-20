@@ -1473,5 +1473,3 @@ guidance.
 See the following implementation steps to
 [create an audit retention policy](./defender.md#msdefender62v1-instructions)
 for additional guidance.
-
-**`TLP:CLEAR`**

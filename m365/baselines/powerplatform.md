@@ -386,5 +386,3 @@ Discover the valid endpoint parameter [here](https://learn.microsoft.com/en-us/p
     ```
     Set-TenantSettings -RequestBody @{ "disablePortalsCreationByNonAdminUsers" = $true }
     ```
-
-**`TLP:CLEAR`**

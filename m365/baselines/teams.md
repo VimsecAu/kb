@@ -779,5 +779,3 @@ record meetings:
 7.  Assign the users who need the ability to record to this policy.
 
 8.  Select **Apply**.
-
-**`TLP:CLEAR`**
