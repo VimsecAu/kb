@@ -94,7 +94,7 @@ The ability to create trial environments SHALL be restricted to admins.
   admin center \| Microsoft
   Learn](https://learn.microsoft.com/en-us/power-platform/admin/control-environment-creation)
 
-- [Power Platform \| Digital Transformation company of
+- [Power Platform \| Digital Transformation organisation of
   Australia](https://desktop.gov.au/blueprint/office-365.html#power-platform)
 
 - [Microsoft Power Apps Documentation \| Power
@@ -140,8 +140,8 @@ cannot be blocked, such as Teams and SharePoint connectors).
 In the DLP policy, connectors can be configured to restrict read
 and write permissions to the data source/service. Connectors that cannot
 be blocked cannot be configured. Agencies should evaluate the
-connectors and configure them to fit company needs and security
-requirements. The company should then create a DLP policy to only allow
+connectors and configure them to fit organisation needs and security
+requirements. The organisation should then create a DLP policy to only allow
 those connectors to be used in Power Platform.
 
 When the Microsoft Entra ID tenant is created, by default, a Power Platform
@@ -157,7 +157,7 @@ creating apps in all other created environments.
 A DLP policy SHALL be created to restrict connector access in the default Power Platform environment.
 
 <!--Policy: MS.POWERPLATFORM.2.1v1; Criticality: SHALL -->
-- _Rationale:_ All users in the tenant have access to the default Power Platform environment. Those users may inadvertently use connectors that share sensitive information with others who should not have access to it. Users requiring Power Apps should be directed to conduct development in other Power Platform environments with DLP connector policies customised to suit the user's needs while also maintaining the company's security posture.
+- _Rationale:_ All users in the tenant have access to the default Power Platform environment. Those users may inadvertently use connectors that share sensitive information with others who should not have access to it. Users requiring Power Apps should be directed to conduct development in other Power Platform environments with DLP connector policies customised to suit the user's needs while also maintaining the organisation's security posture.
 - _Last Modified:_ June 2023
 - _Note:_ The following connectors drive core Power Platform functionality and enable core Office customisation scenarios: Approvals, Dynamics 365 Customer Voice, Excel Online (Business), Microsoft DataverseMicrosoft Dataverse (legacy), Microsoft Teams, Microsoft To-Do (Business), Office 365 Groups, Office 365 Outlook, Office 365 Users, OneDrive for Business, OneNote (Business), Planner, Power Apps Notification, Power BI, SharePoint, Shifts for Microsoft Teams, and Yammer. As such these connectors remain non-blockable to maintain core user scenario functions.
 - _MITRE ATT&CK TTP Mapping:_
@@ -177,7 +177,7 @@ Non-default environments SHOULD have at least one DLP policy affecting them.
 ### Resources
 
 - [Data Policies for Power Automate and Power Apps \| Digital
-  Transformation company of
+  Transformation organisation of
   Australia](https://desktop.gov.au/blueprint/office-365.html#power-apps-and-power-automate)
 
 - [Create a data loss prevention (DLP) policy \| Microsoft
@@ -203,13 +203,13 @@ Non-default environments SHOULD have at least one DLP policy affecting them.
 
 3.  Select the **+ New Policy** icon to create a new policy.
 
-4.  Give the policy a suitable company name and click **Next.**
+4.  Give the policy a suitable organisation name and click **Next.**
 
 5.  At the **Prebuilt connectors** section, search and select the connectors currently in the **Non-business | default** tab containing sensitive data that can be utilized to create flows and apps.
 
 6.  Click **Move to Business.** Connectors added to this group can not share data with connectors in other groups because connectors can reside in only one data group at a time. 
 
-7.  If necessary (and possible) for the connector, click **Configure connector** at the top of the screen to change connector permissions. This allows greater flexibility for the company to allow and block certain connector actions for additional customisation. 
+7.  If necessary (and possible) for the connector, click **Configure connector** at the top of the screen to change connector permissions. This allows greater flexibility for the organisation to allow and block certain connector actions for additional customisation. 
 
 8.  For the default environment, move all other connectors to the **Blocked** category. For non-blockable connectors noted above, the Block action will be grayed out and a warning will appear.
 
@@ -269,9 +269,9 @@ Power Platform tenant isolation SHALL be enabled.
 An inbound/outbound connection allowlist SHOULD be configured.
 
 <!--Policy: MS.POWERPLATFORM.3.2v1; Criticality: SHOULD -->
-- _Rationale:_ Depending on company needs an allowlist can be configured to allow cross tenant collaboration via connectors.
+- _Rationale:_ Depending on organisation needs an allowlist can be configured to allow cross tenant collaboration via connectors.
 - _Last modified:_ June 2023
-- Note: The allowlist may be empty if the company has no need for cross tenant collaboration.
+- Note: The allowlist may be empty if the organisation has no need for cross tenant collaboration.
 
 ### Resources
 

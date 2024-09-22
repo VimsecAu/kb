@@ -18,11 +18,11 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 Access to PowerBI can be controlled by the user type. In this baseline,
 the types of users are defined as follows:
 
-1.  **Internal users**: Members of the company's M365 tenant.
+1.  **Internal users**: Members of the organisation's M365 tenant.
 2.  **External users**: Members of a different M365 tenant.
 3.  **Business to Business (B2B) guest users**: External users that are
   formally invited to view and/or edit Power BI workspace content and
-  are added to the company's Microsoft Entra ID as guest users. These users authenticate with their home organisation/tenant and are granted access to Power BI
+  are added to the organisation's Microsoft Entra ID as guest users. These users authenticate with their home organisation/tenant and are granted access to Power BI
   content by virtue of being listed as guest users in the tenant's Microsoft Entra ID.
 
 > Note:
@@ -41,12 +41,12 @@ and potentially sensitive data exposure.
 
 If it is deemed necessary to make an exception and enable the feature,
 administrators should limit the ability to publish to the web to only
-specific security groups, instead of allowing the entire company to
+specific security groups, instead of allowing the entire organisation to
 publish data to the web.
 
 ### Policies
 #### MS.POWERBI.1.1v1
-The Publish to Web feature SHOULD be disabled unless the company mission requires the capability.
+The Publish to Web feature SHOULD be disabled unless the organisation mission requires the capability.
 
 <!--Policy: MS.POWERBI.1.1v1; Criticality: SHOULD -->
 - _Rationale:_ A publicly accessible web URL can be accessed by everyone, including malicious actors. This policy limits information available on the public web that is not specifically allowed to be published.
@@ -80,14 +80,14 @@ The Publish to Web feature SHOULD be disabled unless the company mission require
 
 ## 2. Power BI Guest Access
 
-This section provides policies helping reduce guest user access risks related to Power BI data and resources. An company with externally shareable Power BI resources and data must consider its unique risk tolerance when granting access to guest users.
+This section provides policies helping reduce guest user access risks related to Power BI data and resources. An organisation with externally shareable Power BI resources and data must consider its unique risk tolerance when granting access to guest users.
 
 ### Policies
 #### MS.POWERBI.2.1v1
-Guest user access to the Power BI tenant SHOULD be disabled unless the company mission requires the capability.
+Guest user access to the Power BI tenant SHOULD be disabled unless the organisation mission requires the capability.
 
 <!--Policy: MS.POWERBI.2.1v1; Criticality: SHOULD -->
-- _Rationale:_ Disabling external access to Power BI helps keep guest users from accessing potentially risky data and application programming interfaces (APIs). If an company needs to allow guest access, this can be limited to users in specific security groups to curb risk.
+- _Rationale:_ Disabling external access to Power BI helps keep guest users from accessing potentially risky data and application programming interfaces (APIs). If an organisation needs to allow guest access, this can be limited to users in specific security groups to curb risk.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1485: Data Destruction](https://attack.mitre.org/techniques/T1485/)
@@ -136,17 +136,17 @@ To Enable with Security Group(s):
 
 This section provides policies that help reduce guest user invitation risks related to Power BI data and resources.
 The settings in this section control whether Power BI allows inviting external users to
-the company's organisation through Power BI's sharing workflows and
+the organisation's organisation through Power BI's sharing workflows and
 experiences. After an external user accepts the invite, they become an
 Microsoft Entra ID B2B guest user in the organisation. They will then appear in user
 pickers throughout the Power BI user experience.
 
 ### Policies
 #### MS.POWERBI.3.1v1
-The Invite external users to your organisation feature SHOULD be disabled unless company mission requires the capability.
+The Invite external users to your organisation feature SHOULD be disabled unless organisation mission requires the capability.
 
 <!--Policy: MS.POWERBI.3.1v1; Criticality: SHOULD -->
-- _Rationale:_ Disabling this feature keeps internal users from inviting guest users. Therefore guest users can be limited from accessing potentially risky data/APIs. If an company needs to allow guest access, the invitation feature can be limited to users in specific security groups to help limit risk.
+- _Rationale:_ Disabling this feature keeps internal users from inviting guest users. Therefore guest users can be limited from accessing potentially risky data/APIs. If an organisation needs to allow guest access, the invitation feature can be limited to users in specific security groups to help limit risk.
 - _Last modified:_ June 2023
 > Note:
 > If this feature is disabled, existing guest users in the tenant continue to have access to Power BI items they already had access to and continue to be listed in user picker experiences. After it is disabled, an external user who is not already a guest user cannot be added to the tenant through Power BI.
@@ -201,7 +201,7 @@ To enable with security groups:
 
 ## 4. Power BI Service Principals
 
-Service principals are an authentication method that can be used to let an Microsoft Entra ID application access Power BI service content and APIs. Power BI supports using service principals to manage application identities. Service principals use APIs to access tenant-level features, controlled by Power BI service administrators and enabled for the entire company or for company security groups. Accessing service principals can be controlled by creating dedicated security groups for them and using these groups in any Power BI tenant level-settings. If service principals are employed for Power BI, it is recommended that service principal credentials used for encrypting or accessing Power BI be stored in a key vault, with properly assigned access policies and regularly reviewed access permissions.
+Service principals are an authentication method that can be used to let an Microsoft Entra ID application access Power BI service content and APIs. Power BI supports using service principals to manage application identities. Service principals use APIs to access tenant-level features, controlled by Power BI service administrators and enabled for the entire organisation or for organisation security groups. Accessing service principals can be controlled by creating dedicated security groups for them and using these groups in any Power BI tenant level-settings. If service principals are employed for Power BI, it is recommended that service principal credentials used for encrypting or accessing Power BI be stored in a key vault, with properly assigned access policies and regularly reviewed access permissions.
 
 Several high-level use cases for service principals:
 
@@ -440,7 +440,7 @@ Sensitivity labels SHOULD be enabled for Power BI and employed for sensitive dat
   have a Power BI Pro or Premium Per User (PPU) licence, in addition to
   one of the previously mentioned Azure Information Protection licences.
 
-- Before enabling sensitivity labels on the company's tenant, ensure sensitivity labels have been defined and published for relevant
+- Before enabling sensitivity labels on the organisation's tenant, ensure sensitivity labels have been defined and published for relevant
   users and groups. See [Create and configure sensitivity labels and
   their
   policies](https://learn.microsoft.com/en-us/purview/create-sensitivity-labels)
@@ -494,19 +494,19 @@ sources, see below:
     from data sources to their data in Power BI (preview).**
 
 3. Enable **Restrict content with protected labels from being shared
-    via link with everyone in your company**.
+    via link with everyone in your organisation**.
 
 When this setting is enabled, users can't generate a sharing link for
-people in the company for content with protection settings in the
+people in the organisation for content with protection settings in the
 sensitivity label.
 
 Sensitivity labels with protection settings include encryption or
-content markings. For example, the company may have a "Highly
+content markings. For example, the organisation may have a "Highly
 Confidential" label that includes encryption and applies a "Highly
 Confidential" watermark to content with this label. When this
 tenant setting is enabled and a report has a sensitivity label with
 protection settings, then users cannot create sharing links for people in
-the company.
+the organisation.
 
 **Information Protection Prerequisites Specific to Power BI**
 
@@ -526,7 +526,7 @@ the company.
   have a Power BI Pro or Premium Per User (PPU) licence in addition to
   one of the previously mentioned Azure Information Protection licences.
 
-- Before enabling sensitivity labels on the company's tenant, make sure
+- Before enabling sensitivity labels on the organisation's tenant, make sure
   that sensitivity labels have been defined and published for relevant
   users and groups. See [Create and configure sensitivity labels and
   their
@@ -646,7 +646,7 @@ tenant.
 Then assign these encryption keys per Premium capacity for encrypting
 content in the capacity.
 
-To enable bringing the company's key for Power BI, the high-level
+To enable bringing the organisation's key for Power BI, the high-level
 configuration steps are as follows:
 
 1.  Add the Power BI service as a service principal for the key vault,
@@ -670,7 +670,7 @@ configuration steps are as follows:
 
 - [Microsoft Security DevOps Azure DevOps extension](https://learn.microsoft.com/en-us/azure/defender-for-cloud/azure-devops-extension)
 
-- For GitHub, the company can use the native secret scanning feature to
+- For GitHub, the organisation can use the native secret scanning feature to
   identify credentials or other form of secrets within code at [About
   secret scanning \| GitHub
   docs](https://docs.github.com/en/code-security/secret-scanning/about-secret-scanning)
@@ -702,7 +702,7 @@ able to open protected files.
 
 Power BI can allow users to copy and paste visuals from Power BI reports
 as static images into external applications. This could represent a data
-security risk in some contexts. The company must evaluate whether this
+security risk in some contexts. The organisation must evaluate whether this
 represents risk for its data artifacts and whether to turn this off in
 the Export and Sharing Settings.
 
@@ -784,7 +784,7 @@ disabling public internet access.
   principals; only provide the ability to create app registrations to
   entities requiring it.
 
-- Instead of enabling service principals for the entire company,
+- Instead of enabling service principals for the entire organisation,
   implement for a dedicated security group.
 
 > Note:

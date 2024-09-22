@@ -18,13 +18,13 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 Access to Teams can be controlled by the user type. In this baseline,
 the types of users are defined as follows:
 
-1.  **Internal users**: Members of the company's M365 tenant.
+1.  **Internal users**: Members of the organisation's M365 tenant.
 
 2.  **External users**: Members of a different M365 tenant.
 
 3.  **Business to Business (B2B) guest users**: External users who are
     formally invited to collaborate with the team and added to the
-    company's Microsoft Entra as guest users. These users
+    organisation's Microsoft Entra as guest users. These users
     authenticate with their home organisation/tenant and are granted
     access to the team by virtue of being listed as guest users on the
     tenant's Microsoft Entra.
@@ -33,7 +33,7 @@ the types of users are defined as follows:
     organisation (e.g., personal Microsoft accounts).
 
 5.  **Anonymous users**: Teams users joining calls who are not
-    authenticated through the company's tenant; these users include unmanaged
+    authenticated through the organisation's tenant; these users include unmanaged
     users, external users (except for B2B guests), and true anonymous
     users (i.e., users who are not logged in to any Microsoft or
     organisation account, such as dial-in users[^1]).
@@ -52,7 +52,7 @@ This section helps reduce security risks related to the user permissions for rec
 External meeting participants SHOULD NOT be enabled to request control of shared desktops or windows.
 
 <!--Policy: MS.TEAMS.1.1v1; Criticality: SHOULD -->
-- _Rationale:_ An external participant with control of a shared screen could potentially perform unauthorised actions on the shared screen. This policy reduces that risk by removing an external participant's ability to request control. However, if an company has a legitimate use case to grant this control, it may be done on a case-by-case basis.
+- _Rationale:_ An external participant with control of a shared screen could potentially perform unauthorised actions on the shared screen. This policy reduces that risk by removing an external participant's ability to request control. However, if an organisation has a legitimate use case to grant this control, it may be done on a case-by-case basis.
 - _Last modified:_ July 2023
 - _Note:_ This policy applies to the Global (Org-wide default) meeting policy, as well as custom meeting policies.
 
@@ -71,7 +71,7 @@ Anonymous users SHALL NOT be enabled to start meetings.
 Anonymous users and dial-in callers SHOULD NOT be admitted automatically.
 
 <!--Policy: MS.TEAMS.1.3v1; Criticality: SHOULD -->
-- _Rationale:_ Automatically allowing admittance to anonymous and dial-in users diminishes control of meeting participation and invites potential data breach. This policy reduces that risk by requiring all anonymous and dial-in users to wait in a lobby until admitted by an authorized meeting participant. If the company has a use case to admit members of specific trusted organisations and/or B2B guests automatically, custom policies may be created and assigned to authorized meeting organisers.  
+- _Rationale:_ Automatically allowing admittance to anonymous and dial-in users diminishes control of meeting participation and invites potential data breach. This policy reduces that risk by requiring all anonymous and dial-in users to wait in a lobby until admitted by an authorized meeting participant. If the organisation has a use case to admit members of specific trusted organisations and/or B2B guests automatically, custom policies may be created and assigned to authorized meeting organisers.  
 - _Last modified:_ July 2023
 - _Note:_ This policy applies to the Global (Org-wide default) meeting policy. Custom meeting policies MAY be created to allow specific users more flexibility. For example, B2B guest users and trusted partner members may be admitted automatically into meetings organised by authorised users.
 
@@ -95,7 +95,7 @@ Dial-in users SHOULD NOT be enabled to bypass the lobby.
 Meeting recording SHOULD be disabled.
 
 <!--Policy: MS.TEAMS.1.6v1; Criticality: SHOULD -->
-- _Rationale:_ Allowing any user to record a Teams meeting or group call may lead to unauthorised disclosure of shared information, including audio, video, and shared screens. By disabling the meeting recording setting in the Global (Org-wide default) meeting policy, an company limits information exposure.
+- _Rationale:_ Allowing any user to record a Teams meeting or group call may lead to unauthorised disclosure of shared information, including audio, video, and shared screens. By disabling the meeting recording setting in the Global (Org-wide default) meeting policy, an organisation limits information exposure.
 - _Last modified:_ July 2023
 - _Note:_ This policy applies to the Global (Org-wide default) meeting policy, as well as custom meeting policies. Custom policies MAY be created to allow more flexibility for specific users.
 
@@ -230,15 +230,15 @@ email address to initiate chats and calls entirely within Teams.
 Blocking external access prevents external users from using Teams as an
 avenue for reconnaissance or phishing. Even with external access
 disabled, external users will still be able to join Teams calls,
-assuming anonymous join is enabled. Depending on company need, if both
+assuming anonymous join is enabled. Depending on organisation need, if both
 external access and anonymous join are blocked—neither required
 nor recommended by this baseline—external collaborators would only be
 able to attend meetings if added as B2B guest users.
 
 External access may be granted on a per-domain basis. This may be
-desirable in some cases (e.g., for company-to-company collaboration). See
-the Chief Information Officer Council's [Intercompany Collaboration
-Program](https://community.max.gov/display/Egov/Intercompany+Collaboration+Program) Office of Management and Budget MA site for a list of .gov domains for sharing.
+desirable in some cases (e.g., for organisation-to-organisation collaboration). See
+the Chief Information Officer Council's [Interorganisation Collaboration
+Program](https://community.max.gov/display/Egov/Interorganisation+Collaboration+Program) Office of Management and Budget MA site for a list of .gov domains for sharing.
 
 Similar to external users, blocking contact with unmanaged Teams users prevents these users from looking up internal users by their email address and initiating chats and calls within Teams. These users would still be able to join calls, assuming anonymous join is enabled. Additionally, unmanaged users may be added to Teams chats if the internal user initiates the contact.
 
@@ -361,7 +361,7 @@ This section helps reduce security risks related to contact with Skype users. Mi
 Contact with Skype users SHALL be blocked.
 
 <!--Policy: MS.TEAMS.3.1v1; Criticality: SHALL -->
-- _Rationale:_ Microsoft is officially retiring all forms of Skype as listed above. Allowing contact with Skype users puts company users at additional security risk.  By blocking contact with Skype users an company limits access to security threats utilizing the vulnerabilities of the Skype product.
+- _Rationale:_ Microsoft is officially retiring all forms of Skype as listed above. Allowing contact with Skype users puts organisation users at additional security risk.  By blocking contact with Skype users an organisation limits access to security threats utilizing the vulnerabilities of the Skype product.
 - _Last modified:_ July 2023
 - _Note:_ This policy is not applicable to Government Community Cloud (GCC), GCC High, and Department of Defense (DoD) tenants. 
 - _MITRE ATT&CK TTP Mapping:_
@@ -400,7 +400,7 @@ This section helps reduce security risks related to Teams email integration. Tea
 Teams email integration SHALL be disabled.
 
 <!--Policy: MS.TEAMS.4.1v1; Criticality: SHALL -->
-- _Rationale:_ Microsoft Teams email integration associates a Microsoft, not tenant domain, email address with a Teams channel. Channel emails are addressed using the Microsoft-owned domain <code>&lt;teams.ms&gt;</code>. By disabling Teams email integration, an company prevents potentially sensitive Teams messages from being sent through external email gateways.  
+- _Rationale:_ Microsoft Teams email integration associates a Microsoft, not tenant domain, email address with a Teams channel. Channel emails are addressed using the Microsoft-owned domain <code>&lt;teams.ms&gt;</code>. By disabling Teams email integration, an organisation prevents potentially sensitive Teams messages from being sent through external email gateways.  
 - _Last modified:_ July 2023
 - _Note:_ Teams email integration is not available in GCC, GCC High, or DoD regions.
 - _MITRE ATT&CK TTP Mapping:_
@@ -443,20 +443,20 @@ development, that users sideload into Teams.
 ### Policies
 
 #### MS.TEAMS.5.1v1
-Agencies SHOULD only allow installation of Microsoft apps approved by the company.
+Agencies SHOULD only allow installation of Microsoft apps approved by the organisation.
 
 <!--Policy: MS.TEAMS.5.1v1; Criticality: SHOULD -->
-- _Rationale:_ Allowing Teams integration with all Microsoft apps can expose the company to potential vulnerabilities present in those apps. By only allowing specific apps and blocking all others, the company will better manage its app integration and potential exposure points.
+- _Rationale:_ Allowing Teams integration with all Microsoft apps can expose the organisation to potential vulnerabilities present in those apps. By only allowing specific apps and blocking all others, the organisation will better manage its app integration and potential exposure points.
 - _Last modified:_ July 2023
 - _Note:_ This policy applies to the Global (Org-wide default) policy, all custom policies, and the org-wide app settings. Custom policies MAY be created to allow more flexibility for specific users.
 - _MITRE ATT&CK TTP Mapping:_
   - [T1195: Supply Chain Compromise](https://attack.mitre.org/techniques/T1195/)
 
 #### MS.TEAMS.5.2v1
-Agencies SHOULD only allow installation of third-party apps approved by the company.
+Agencies SHOULD only allow installation of third-party apps approved by the organisation.
 
 <!--Policy: MS.TEAMS.5.2v1; Criticality: SHOULD -->
-- _Rationale:_ Allowing Teams integration with third-party apps can expose the company to potential vulnerabilities present in an app not managed by the company. By allowing only specific apps approved by the company and blocking all others, the company can limit its exposure to third-party app vulnerabilities.
+- _Rationale:_ Allowing Teams integration with third-party apps can expose the organisation to potential vulnerabilities present in an app not managed by the organisation. By allowing only specific apps approved by the organisation and blocking all others, the organisation can limit its exposure to third-party app vulnerabilities.
 - _Last modified:_ July 2023
 - _Note:_ This policy applies to the Global (Org-wide default) policy, all custom policies if they exist, and the org-wide settings. Custom policies MAY be created to allow more flexibility for specific users. Third-party apps are not available in GCC, GCC High, or DoD regions.
 - _MITRE ATT&CK TTP Mapping:_
@@ -464,10 +464,10 @@ Agencies SHOULD only allow installation of third-party apps approved by the comp
   - [T1528: Steal Application Access Token](https://attack.mitre.org/techniques/T1528/)
 
 #### MS.TEAMS.5.3v1
-Agencies SHOULD only allow installation of custom apps approved by the company.
+Agencies SHOULD only allow installation of custom apps approved by the organisation.
 
 <!--Policy: MS.TEAMS.5.3v1; Criticality: SHOULD -->
-- _Rationale:_ Allowing custom apps integration can expose the company to potential vulnerabilities present in an app not managed by the company. By allowing only specific apps approved by the company and blocking all others, the company can limit its exposure to custom app vulnerabilities.
+- _Rationale:_ Allowing custom apps integration can expose the organisation to potential vulnerabilities present in an app not managed by the organisation. By allowing only specific apps approved by the organisation and blocking all others, the organisation can limit its exposure to custom app vulnerabilities.
 - _Last modified:_ July 2023
 - _Note:_ This policy applies to the Global (Org-wide default) policy, all custom policies if they exist, and the org-wide settings. Custom policies MAY be created to allow more flexibility for specific users. Custom apps are not available in GCC, GCC High, or DoD regions.
 - _MITRE ATT&CK TTP Mapping:_
@@ -522,7 +522,7 @@ Agencies SHOULD only allow installation of custom apps approved by the company.
 5.  Select **Global (Org-wide default)**.
 
 6.  Set **Third-party apps** to **Block all apps**, unless specific apps
-    have been approved by the company, in which case select **Allow
+    have been approved by the organisation, in which case select **Allow
     specific apps and block all others**.
 
 7.  Click **Save**.
@@ -545,7 +545,7 @@ Agencies SHOULD only allow installation of custom apps approved by the company.
 5.  Select **Global (Org-wide default)**.
 
 6.  Set **Custom apps** to **Block all apps**, unless specific apps have
-    been approved by the company, in which case select **Allow specific apps and block all others**.
+    been approved by the organisation, in which case select **Allow specific apps and block all others**.
 
 7.  Click **Save**.
 
@@ -560,7 +560,7 @@ forms an integral part of securing Microsoft Teams. There are
 several commercial DLP solutions available documenting support for
 M365. Microsoft itself offers DLP services, controlled within the Microsoft Purview
 compliance portal. Agencies may select any service that fits their needs and meets
-the requirements outlined in this baseline setting. The DLP solution selected by an company
+the requirements outlined in this baseline setting. The DLP solution selected by an organisation
 should offer services comparable to those offered by Microsoft.
 
 Though using Microsoft's DLP solution is not strictly
@@ -582,7 +582,7 @@ A DLP solution SHALL be enabled. The selected DLP solution SHOULD offer services
 
 #### MS.TEAMS.6.2v1
 The DLP solution SHALL protect personally identifiable information (PII)
-and sensitive information, as defined by the company. At a minimum, sharing of credit card numbers, taxpayer identification numbers (TINs),
+and sensitive information, as defined by the organisation. At a minimum, sharing of credit card numbers, taxpayer identification numbers (TINs),
 and Social Security numbers (SSNs) via email SHALL be restricted.
 
 <!--Policy: MS.TEAMS.6.2v1; Criticality: SHALL -->
@@ -611,15 +611,15 @@ and Social Security numbers (SSNs) via email SHALL be restricted.
 
 #### MS.TEAMS.6.1v1 Instructions
 
-Any product meeting the requirements outlined in this baseline policy may be used. If the company uses Microsoft Defender, see the following implementation steps for [DLP](./defender.md#implementation-3) for additional guidance.
+Any product meeting the requirements outlined in this baseline policy may be used. If the organisation uses Microsoft Defender, see the following implementation steps for [DLP](./defender.md#implementation-3) for additional guidance.
 
 #### MS.TEAMS.6.2v1 Instructions
 
-Any product meeting the requirements outlined in this baseline policy may be used. If the company uses Microsoft Defender, see the following implementation steps for [DLP](./defender.md#implementation-3) for additional guidance.
+Any product meeting the requirements outlined in this baseline policy may be used. If the organisation uses Microsoft Defender, see the following implementation steps for [DLP](./defender.md#implementation-3) for additional guidance.
 
 ## 7. Malware Scanning
 
-Malware scanning protects M365 Teams assets from malicious software. Several commercial anti-malware solutions detect and prevent computer viruses, malware, and other malicious software from being introduced into M365 Teams. Agencies may select any product that meets the requirements outlined in this baseline policy group. If the company is using Microsoft Defender to implement malware scanning, see the following policies of the Vimsec M365 Security Configuration Baseline for Defender for Office 365 for additional guidance.
+Malware scanning protects M365 Teams assets from malicious software. Several commercial anti-malware solutions detect and prevent computer viruses, malware, and other malicious software from being introduced into M365 Teams. Agencies may select any product that meets the requirements outlined in this baseline policy group. If the organisation is using Microsoft Defender to implement malware scanning, see the following policies of the Vimsec M365 Security Configuration Baseline for Defender for Office 365 for additional guidance.
 
 - [MS.DEFENDER.3.1v1 \| Vimsec M365 Security Configuration Baseline for Defender for Office 365](./defender.md#msdefender31v1)
   - Safe attachments SHOULD be enabled for SharePoint, OneDrive, and Microsoft Teams.
@@ -665,11 +665,11 @@ Users SHOULD be prevented from opening or downloading files detected as malware.
 
 #### MS.TEAMS.7.1v1 Instructions
 
-Any product meeting the requirements outlined in this baseline policy may be used. If the company uses Microsoft Defender, see the following implementation steps for [Safe Attachments](./defender.md#implementation-2) for additional guidance.
+Any product meeting the requirements outlined in this baseline policy may be used. If the organisation uses Microsoft Defender, see the following implementation steps for [Safe Attachments](./defender.md#implementation-2) for additional guidance.
 
 #### MS.TEAMS.7.2v1 Instructions
 
-Any product meeting the requirements outlined in this baseline policy may be used. If the company uses Microsoft Defender, see the following implementation steps for [Safe Attachments](./defender.md#implementation-2) for additional guidance.
+Any product meeting the requirements outlined in this baseline policy may be used. If the organisation uses Microsoft Defender, see the following implementation steps for [Safe Attachments](./defender.md#implementation-2) for additional guidance.
 
 ## 8. Link Protection
 
@@ -693,7 +693,7 @@ Their proxy can perform the following actions:
 If all checks pass, the user is redirected to the original URL.
 
 Microsoft Defender includes link-scanning capabilities. Using Microsoft Defender is not strictly required for this purpose; any product fulfilling the requirements outlined in this baseline policy group may be used.
-If the company uses Microsoft Defender to meet this baseline policy group, see the following policy of the Vimsec M365 Security Configuration Baseline for Defender for Office 365 for additional guidance.
+If the organisation uses Microsoft Defender to meet this baseline policy group, see the following policy of the Vimsec M365 Security Configuration Baseline for Defender for Office 365 for additional guidance.
 
 - [MS.DEFENDER.1.3v1 \| Vimsec M365 Security Configuration Baseline for Defender for Office 365](./defender.md#msdefender13v1).
   - All users SHALL be added to Defender for Office 365 Protection in either the standard or strict preset security policy.
@@ -743,11 +743,11 @@ User click tracking SHOULD be enabled.
 
 #### MS.TEAMS.8.1v1 Instructions
 
-Any product meeting the requirements outlined in this baseline policy may be used. If the company uses Microsoft Defender, see the following implementation steps for [standard or strict preset security policy](defender.md#msdefender13v1-instructions) for additional guidance.
+Any product meeting the requirements outlined in this baseline policy may be used. If the organisation uses Microsoft Defender, see the following implementation steps for [standard or strict preset security policy](defender.md#msdefender13v1-instructions) for additional guidance.
 
 #### MS.TEAMS.8.2v1 Instructions
 
-Any product meeting the requirements outlined in this baseline policy may be used. If the company uses Microsoft Defender, see the following implementation steps for [standard or strict preset security policy](defender.md#msdefender13v1-instructions) for additional guidance.
+Any product meeting the requirements outlined in this baseline policy may be used. If the organisation uses Microsoft Defender, see the following implementation steps for [standard or strict preset security policy](defender.md#msdefender13v1-instructions) for additional guidance.
 
 
 [^1]: Note that B2B guest users and all anonymous users except for

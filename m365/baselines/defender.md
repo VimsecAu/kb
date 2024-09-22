@@ -207,7 +207,7 @@ instead and configure the policy settings according to [Use the Microsoft 365 De
 
 ## 2. Impersonation Protection
 Impersonation protection checks incoming emails to see if the sender
-address is similar to the users or domains on a company-defined list. If
+address is similar to the users or domains on a organisation-defined list. If
 the sender address is significantly similar, as to indicate an
 impersonation attempt, the email is quarantined.
 
@@ -227,13 +227,13 @@ User impersonation protection SHOULD be enabled for sensitive accounts in both t
   - [T1656: Impersonation](https://attack.mitre.org/techniques/T1656/)
 
 #### MS.DEFENDER.2.2v1
-Domain impersonation protection SHOULD be enabled for domains owned by the company in both the standard and strict preset policies.
+Domain impersonation protection SHOULD be enabled for domains owned by the organisation in both the standard and strict preset policies.
 
 <!--Policy: MS.DEFENDER.2.2v1; Criticality: SHOULD -->
-- _Rationale:_ Configuring domain impersonation protection for all company domains reduces the risk of a user being deceived by a look-alike domain. By configuring impersonation protection in both preset policies, administrators can help protect email recipients from impersonated emails, regardless of whether they are added to the standard or strict policy.
+- _Rationale:_ Configuring domain impersonation protection for all organisation domains reduces the risk of a user being deceived by a look-alike domain. By configuring impersonation protection in both preset policies, administrators can help protect email recipients from impersonated emails, regardless of whether they are added to the standard or strict policy.
 - _Last modified:_ June 2023
 - _Note:_ The standard and strict preset security policies must be enabled to
-          protect company domains.
+          protect organisation domains.
 - _MITRE ATT&CK TTP Mapping:_
   - [T1566: Phishing](https://attack.mitre.org/techniques/T1566/)
     - [T1566.001: Spearphishing Attachment](https://attack.mitre.org/techniques/T1566/001/)
@@ -300,7 +300,7 @@ Domain impersonation protection SHOULD be added for important partners in both t
    protection settings**.
 6. Select **Next** until you reach the **Impersonation Protection** page, then
    select **Next** once more.
-7. On the **Protected custom domains** page, add each company domain
+7. On the **Protected custom domains** page, add each organisation domain
    and click **Add** after each.
 8. Select **Next** until you reach the **Trusted senders and domains** page.
 9. (Optional) Add specific domains here to not flag as impersonation when
@@ -385,7 +385,7 @@ Learn](https://learn.microsoft.com/en-us/microsoft-365/security/office-365-secur
 ## 4. Data Loss Prevention
 
 There are several approaches to securing sensitive information, such
-as warning users, encryption, or blocking attempts to share. company
+as warning users, encryption, or blocking attempts to share. organisation
 policies for sensitive information, such as personally identifiable
 information (PII), should dictate how that information is handled and
 inform associated data loss prevention (DLP) policies. Defender can detect
@@ -398,7 +398,7 @@ their environment and needs.
 
 ### Policies
 #### MS.DEFENDER.4.1v1
-A custom policy SHALL be configured to protect PII and sensitive information, as defined by the company. At a minimum, credit card numbers, U.S. Individual Taxpayer Identification Numbers (ITIN), and U.S. Social Security numbers (SSN) SHALL be blocked.
+A custom policy SHALL be configured to protect PII and sensitive information, as defined by the organisation. At a minimum, credit card numbers, U.S. Individual Taxpayer Identification Numbers (ITIN), and U.S. Social Security numbers (SSN) SHALL be blocked.
 
 <!--Policy: MS.DEFENDER.4.1v1; Criticality: SHALL -->
 - _Rationale:_ Users may inadvertently share sensitive information with
@@ -433,7 +433,7 @@ The action for the custom policy SHOULD be set to block sharing sensitive inform
 <!--Policy: MS.DEFENDER.4.3v1; Criticality: SHOULD -->
 - _Rationale:_ Access to sensitive information should be prohibited unless
                explicitly allowed. Specific exemptions can be made based
-               on company policies and valid business justifications.
+               on organisation policies and valid business justifications.
 - _Last modified:_ June 2023
 - _Note:_ The custom policy referenced here is the same policy
           configured in [MS.DEFENDER.4.1v1](#msdefender41v1).
@@ -446,7 +446,7 @@ The action for the custom policy SHOULD be set to block sharing sensitive inform
 Notifications to inform users and help educate them on the proper use of sensitive information SHOULD be enabled in the custom policy.
 
 <!--Policy: MS.DEFENDER.4.4v1; Criticality: SHOULD -->
-- _Rationale:_ Some users may not be aware of company policies on
+- _Rationale:_ Some users may not be aware of organisation policies on
                proper use of sensitive information. Enabling
                notifications provides positive feedback to users when
                accessing sensitive information.
@@ -460,7 +460,7 @@ A list of apps that are restricted from accessing files protected by DLP policy 
 
 <!--Policy: MS.DEFENDER.4.5v1; Criticality: SHOULD -->
 - _Rationale:_ Some apps may inappropriately share accessed files or not
-               conform to company policies for access to sensitive
+               conform to organisation policies for access to sensitive
                information. Defining a list of those apps makes it
                possible to use DLP policies to restrict those apps' access
                to sensitive information on endpoints using Defender.
@@ -476,7 +476,7 @@ information by restricted apps and unwanted Bluetooth applications.
 
 <!--Policy: MS.DEFENDER.4.6v1; Criticality: SHOULD -->
 - _Rationale:_ Some apps may inappropriately share accessed files
-               or not conform to company policies for access to sensitive
+               or not conform to organisation policies for access to sensitive
                information. Defining a DLP policy with an action to block
                access from restricted apps and unwanted Bluetooth
                applications prevents unauthorized disclosure by those
@@ -486,7 +486,7 @@ information by restricted apps and unwanted Bluetooth applications.
   - The custom policy referenced here is the same policy
     configured in [MS.DEFENDER.4.1v1](#msdefender41v1).
   - This action can only be included if at least one device is onboarded
-    to the company tenant. Otherwise, the option to block restricted apps will
+    to the organisation tenant. Otherwise, the option to block restricted apps will
     not be available.
 - _MITRE ATT&CK TTP Mapping:_
   - [T1565: Data Manipulation](https://attack.mitre.org/techniques/T1565/)
@@ -559,13 +559,13 @@ information by restricted apps and unwanted Bluetooth applications.
 
 12. Click **Add**, then **Sensitive info types**.
 
-13. Add information types that protect information sensitive to the company.
-    At a minimum, the company should protect:
+13. Add information types that protect information sensitive to the organisation.
+    At a minimum, the organisation should protect:
 
     - Credit card numbers
     - U.S. Individual Taxpayer Identification Numbers (ITIN)
     - U.S. Social Security Numbers (SSN)
-    - All company-defined PII and sensitive information
+    - All organisation-defined PII and sensitive information
 
 14. Click **Add**.
 
@@ -681,7 +681,7 @@ real-time insight into possible security incidents. Guidance on specific alerts 
 At a minimum, the alerts required by the Vimsec M365 Security Configuration Baseline for Exchange Online SHALL be enabled.
 
 <!--Policy: MS.DEFENDER.5.1v1; Criticality: SHALL -->
-- _Rationale:_ Potentially malicious or service-impacting events may go undetected without a means of detecting these events. Setting up a mechanism to alert administrators to the list of events linked above draws attention to them to minimize any impact to users and the company.
+- _Rationale:_ Potentially malicious or service-impacting events may go undetected without a means of detecting these events. Setting up a mechanism to alert administrators to the list of events linked above draws attention to them to minimize any impact to users and the organisation.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1562: Impair Defenses](https://attack.mitre.org/techniques/T1562/)
@@ -691,7 +691,7 @@ At a minimum, the alerts required by the Vimsec M365 Security Configuration Base
 The alerts SHOULD be sent to a monitored address or incorporated into a SIEM.
 
 <!--Policy: MS.DEFENDER.5.2v1; Criticality: SHOULD -->
-- _Rationale:_ Suspicious or malicious events, if not resolved promptly, may have a greater impact to users and the company. Sending alerts to a monitored email address or Security Information and Event Management (SIEM) system helps ensure events are acted upon in a timely manner to limit overall impact.
+- _Rationale:_ Suspicious or malicious events, if not resolved promptly, may have a greater impact to users and the organisation. Sending alerts to a monitored email address or Security Information and Event Management (SIEM) system helps ensure events are acted upon in a timely manner to limit overall impact.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1562: Impair Defenses](https://attack.mitre.org/techniques/T1562/)
@@ -717,7 +717,7 @@ The alerts SHOULD be sent to a monitored address or incorporated into a SIEM.
 3. Select **Alert Policy**.
 
 4. Select the checkbox next to each alert to enable as determined by the
-   company and at a minimum those referenced in the
+   organisation and at a minimum those referenced in the
    [_Vimsec M365 Security Configuration Baseline for Exchange Online_](./exo.md#msexo161v1) which are:
 
    a. **Suspicious email sending patterns detected.**
@@ -731,8 +731,6 @@ The alerts SHOULD be sent to a monitored address or incorporated into a SIEM.
    e. **Tenant restricted from sending unprovisioned email.**
 
    f. **Tenant restricted from sending email.**
-
-   g. **A potentially malicious URL click was detected.**
 
 5. Click the pencil icon from the top menu.
 
@@ -813,7 +811,7 @@ Microsoft Purview Audit (Premium) logging SHALL be enabled for ALL users.
 Audit logs SHALL be maintained for at least the minimum duration dictated by OMB M-21-31.
 
 <!--Policy: MS.DEFENDER.6.3v1; Criticality: SHALL -->
-- _Rationale:_ Audit logs may no longer be available when needed if they are not retained for a sufficient time. Increased log retention time gives an company the necessary visibility to investigate incidents that occurred some time ago.
+- _Rationale:_ Audit logs may no longer be available when needed if they are not retained for a sufficient time. Increased log retention time gives an organisation the necessary visibility to investigate incidents that occurred some time ago.
 - _Last modified:_ June 2023
 - _Note_: Purview Audit (Premium) provides a default audit log retention policy,
           retaining Exchange Online, SharePoint Online, OneDrive for
@@ -879,6 +877,6 @@ Microsoft
 Learn.](https://learn.microsoft.com/en-us/purview/audit-premium-setup?view=o365-worldwide)
 
 #### MS.DEFENDER.6.3v1 Instructions
-To create one or more custom audit retention policies, if the default retention policy is not sufficient for company needs, follow [Create an audit log retention policy](https://learn.microsoft.com/en-us/purview/audit-log-retention-policies?view=o365-worldwide#create-an-audit-log-retention-policy) instructions.
+To create one or more custom audit retention policies, if the default retention policy is not sufficient for organisation needs, follow [Create an audit log retention policy](https://learn.microsoft.com/en-us/purview/audit-log-retention-policies?view=o365-worldwide#create-an-audit-log-retention-policy) instructions.
 Ensure the duration selected in the retention policies is at least one year,
 in accordance with OMB M-21-31.

@@ -12,7 +12,7 @@ Portions of this document are adapted from documents in Microsoft's [M365](https
 ## Assumptions
 The **Licence Requirements** sections of this document assume the organisation is using an [M365 E3](https://www.microsoft.com/en-us/microsoft-365/compare-microsoft-365-enterprise-plans) or [G3](https://www.microsoft.com/en-us/microsoft-365/government) licence level at a minimum. Therefore, only licences not included in E3/G3 are listed.
 
-Some of the policies in this baseline may link to Microsoft instruction pages which assume that an company has created emergency access accounts in Microsoft Entra ID and [implemented strong security measures](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-emergency-access#create-emergency-access-accounts) to protect the credentials of those accounts.
+Some of the policies in this baseline may link to Microsoft instruction pages which assume that an organisation has created emergency access accounts in Microsoft Entra ID and [implemented strong security measures](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-emergency-access#create-emergency-access-accounts) to protect the credentials of those accounts.
 
 ## Key Terminology
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
@@ -81,7 +81,7 @@ Legacy authentication SHALL be blocked.
 
 #### MS.AAD.1.1v1 Instructions
 
-- [Determine if an company's existing applications use legacy authentication](https://learn.microsoft.com/en-us/entra/identity/conditional-access/block-legacy-authentication#identify-legacy-authentication-use) before blocking legacy authentication across the entire application base.
+- [Determine if an organisation's existing applications use legacy authentication](https://learn.microsoft.com/en-us/entra/identity/conditional-access/block-legacy-authentication#identify-legacy-authentication-use) before blocking legacy authentication across the entire application base.
 
 - Create a [Conditional Access policy to block legacy authentication](https://learn.microsoft.com/en-us/entra/identity/conditional-access/howto-conditional-access-policy-block-legacy).
 
@@ -204,7 +204,7 @@ Portions of this document are adapted from documents in Microsoft's [M365](https
 ## Assumptions
 The **Licence Requirements** sections of this document assume the organisation is using an [M365 E3](https://www.microsoft.com/en-us/microsoft-365/compare-microsoft-365-enterprise-plans) or [G3](https://www.microsoft.com/en-us/microsoft-365/government) licence level at a minimum. Therefore, only licences not included in E3/G3 are listed.
 
-Some of the policies in this baseline may link to Microsoft instruction pages which assume that an company has created emergency access accounts in Microsoft Entra ID and [implemented strong security measures](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-emergency-access#create-emergency-access-accounts) to protect the credentials of those accounts.
+Some of the policies in this baseline may link to Microsoft instruction pages which assume that an organisation has created emergency access accounts in Microsoft Entra ID and [implemented strong security measures](https://learn.microsoft.com/en-us/entra/identity/role-based-access-control/security-emergency-access#create-emergency-access-accounts) to protect the credentials of those accounts.
 
 ## Key Terminology
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in [RFC 2119](https://datatracker.ietf.org/doc/html/rfc2119).
@@ -273,7 +273,7 @@ Legacy authentication SHALL be blocked.
 
 #### MS.AAD.1.1v1 Instructions
 
-- [Determine if an company's existing applications use legacy authentication](https://learn.microsoft.com/en-us/entra/identity/conditional-access/block-legacy-authentication#identify-legacy-authentication-use) before blocking legacy authentication across the entire application base.
+- [Determine if an organisation's existing applications use legacy authentication](https://learn.microsoft.com/en-us/entra/identity/conditional-access/block-legacy-authentication#identify-legacy-authentication-use) before blocking legacy authentication across the entire application base.
 
 - Create a [Conditional Access policy to block legacy authentication](https://learn.microsoft.com/en-us/entra/identity/conditional-access/howto-conditional-access-policy-block-legacy).
 
@@ -453,7 +453,7 @@ Phishing-resistant MFA SHALL be required for highly privileged roles.
 Managed devices SHOULD be required for authentication.
 
 <!--Policy: MS.AAD.3.7v1; Criticality: SHOULD -->
-- _Rationale:_ The security risk of an adversary authenticating to the tenant from their own device is reduced by requiring a managed device to authenticate. Managed devices are under the provisioning and control of the company. [OMB-22-09](https://www.whitehouse.gov/wp-content/uploads/2022/01/M-22-09.pdf) states, "When authorising users to access resources, agencies must consider at least one device-level signal alongside identity information about the authenticated user."
+- _Rationale:_ The security risk of an adversary authenticating to the tenant from their own device is reduced by requiring a managed device to authenticate. Managed devices are under the provisioning and control of the organisation. [OMB-22-09](https://www.whitehouse.gov/wp-content/uploads/2022/01/M-22-09.pdf) states, "When authorising users to access resources, agencies must consider at least one device-level signal alongside identity information about the authenticated user."
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1078: Valid Accounts](https://attack.mitre.org/techniques/T1078/)
@@ -463,7 +463,7 @@ Managed devices SHOULD be required for authentication.
 Managed Devices SHOULD be required to register MFA.
 
 <!--Policy: MS.AAD.3.8v1; Criticality: SHOULD -->
-- _Rationale:_ Reduce risk of an adversary using stolen user credentials and then registering their own MFA device to access the tenant by requiring a managed device provisioned and controlled by the company to perform registration actions. This prevents the adversary from using their own unmanaged device to perform the registration.
+- _Rationale:_ Reduce risk of an adversary using stolen user credentials and then registering their own MFA device to access the tenant by requiring a managed device provisioned and controlled by the organisation to perform registration actions. This prevents the adversary from using their own unmanaged device to perform the registration.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1078: Valid Accounts](https://attack.mitre.org/techniques/T1078/)
@@ -576,10 +576,10 @@ This section provides policies to reduce security risks related to the lack of s
 
 ### Policies
 #### MS.AAD.4.1v1
-Security logs SHALL be sent to the company's security operations centre for monitoring.
+Security logs SHALL be sent to the organisation's security operations centre for monitoring.
 
 <!--Policy: MS.AAD.4.1v1; Criticality: SHALL -->
-- _Rationale:_ The security risk of not having visibility into cyber attacks is reduced by collecting logs in the company's centralised security detection infrastructure. This makes security events available for auditing, query, and incident response.
+- _Rationale:_ The security risk of not having visibility into cyber attacks is reduced by collecting logs in the organisation's centralised security detection infrastructure. This makes security events available for auditing, query, and incident response.
 - _Last modified:_ June 2023
 - _Note:_ The following Microsoft Entra ID logs (configured in diagnostic settings), are required: `AuditLogs, SignInLogs, RiskyUsers, UserRiskEvents, NonInteractiveUserSignInLogs, ServicePrincipalSignInLogs, ADFSSignInLogs, RiskyServicePrincipals, ServicePrincipalRiskEvents, EnrichedOffice365AuditLogs, MicrosoftGraphActivityLogs`. If managed identities are used for Azure resources, also send the `ManagedIdentitySignInLogs` log type. If the Microsoft Entra ID Provisioning Service is used to provision users to software-as-a-service (SaaS) apps or other systems, also send the `ProvisioningLogs` log type.
 - _Note:_ Agencies can benefit from security detection capabilities offered by the Vimsec Cloud Log Aggregation Warehouse (CLAW) system. Agencies are urged to send the logs to CLAW. Contact Vimsec at cyberliason@Vimsec.dhs.gov to request integration instructions.
@@ -597,7 +597,7 @@ Security logs SHALL be sent to the company's security operations centre for moni
 
 ### Licence Requirements
 
-- An Azure subscription may be required to send logs to an external system, such as the company's Security Information and Event Management (SIEM).
+- An Azure subscription may be required to send logs to an external system, such as the organisation's Security Information and Event Management (SIEM).
 
 ### Implementation
 
@@ -658,7 +658,7 @@ Group owners SHALL NOT be allowed to consent to applications.
 
 - [Restrict Application Registration for Non-Privileged Users](https://www.trendmicro.com/cloudoneconformity/knowledge-base/azure/ActiveDirectory/users-can-register-applications.html)
 
-- [Enforce Administrators to Provide Consent for Apps Before Use](https://www.trendmicro.com/cloudoneconformity/knowledge-base/azure/ActiveDirectory/users-can-consent-to-apps-accessing-company-data-on-their-behalf.html)
+- [Enforce Administrators to Provide Consent for Apps Before Use](https://www.trendmicro.com/cloudoneconformity/knowledge-base/azure/ActiveDirectory/users-can-consent-to-apps-accessing-organisation-data-on-their-behalf.html)
 
 - [Configure the admin consent workflow](https://learn.microsoft.com/en-us/entra/identity/enterprise-apps/configure-admin-consent-workflow)
 
@@ -992,7 +992,7 @@ Exception cases:
 
 ## 8. Guest User Access
 
-This section provides policies that help reduce security risks related to integrating M365 guest users. A guest user is a specific type of external user who belongs to a separate organisation but can access files, meetings, Teams, and other data in the target tenant. It is common to invite guest users to a tenant for cross-company collaboration purposes.
+This section provides policies that help reduce security risks related to integrating M365 guest users. A guest user is a specific type of external user who belongs to a separate organisation but can access files, meetings, Teams, and other data in the target tenant. It is common to invite guest users to a tenant for cross-organisation collaboration purposes.
 
 #### MS.AAD.8.1v1
 Guest users SHOULD have limited or restricted access to Microsoft Entra ID directory objects.
@@ -1010,14 +1010,14 @@ Guest users SHOULD have limited or restricted access to Microsoft Entra ID direc
 Only users with the Guest Inviter role SHOULD be able to invite guest users.
 
 <!--Policy: MS.AAD.8.2v1; Criticality: SHOULD -->
-- _Rationale:_ By only allowing an authorized group of individuals to invite external users to create accounts in the tenant, an company can enforce a guest user account approval process, reducing the risk of unauthorized account creation.
+- _Rationale:_ By only allowing an authorized group of individuals to invite external users to create accounts in the tenant, an organisation can enforce a guest user account approval process, reducing the risk of unauthorized account creation.
 - _Last modified:_ June 2023
 - _MITRE ATT&CK TTP Mapping:_
   - [T1098: Account Manipulation](https://attack.mitre.org/techniques/T1098/)
     - [T1098.003: Additional Cloud Roles](https://attack.mitre.org/techniques/T1098/003/)
 
 #### MS.AAD.8.3v1
-Guest invites SHOULD only be allowed to specific external domains that have been authorized by the company for legitimate business purposes.
+Guest invites SHOULD only be allowed to specific external domains that have been authorized by the organisation for legitimate business purposes.
 
 <!--Policy: MS.AAD.8.3v1; Criticality: SHOULD -->
 - _Rationale:_ Limiting which domains can be invited to create guest accounts in the tenant helps reduce the risk of users from unauthorized external organisations getting access.
@@ -1061,7 +1061,7 @@ Guest invites SHOULD only be allowed to specific external domains that have been
 2. Under **Collaboration restrictions**, select **Allow invitations
     only to the specified domains (most restrictive)**.
 
-3. Select **Target domains** and enter the names of the external domains authorized by the company for guest user access.
+3. Select **Target domains** and enter the names of the external domains authorized by the organisation for guest user access.
 
 4. Click **Save**.
 

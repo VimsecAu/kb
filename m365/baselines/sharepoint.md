@@ -20,7 +20,7 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ## 1. External Sharing
 
-This section helps reduce security risks related to sharing files with users external to the company. This includes guest users, users who use a verification code, and users who access an Anyone link.
+This section helps reduce security risks related to sharing files with users external to the organisation. This includes guest users, users who use a verification code, and users who access an Anyone link.
 
 
 ### Policies
@@ -48,10 +48,10 @@ External sharing for OneDrive SHALL be limited to Existing guests or Only People
   - [T1530: Data from Cloud Storage](https://attack.mitre.org/techniques/T1530/)
 
 #### MS.SHAREPOINT.1.3v1
-External sharing SHALL be restricted to approved external domains and/or users in approved security groups per intercompany collaboration needs.
+External sharing SHALL be restricted to approved external domains and/or users in approved security groups per interorganisation collaboration needs.
 
 <!--Policy: MS.SHAREPOINT.1.3v1; Criticality: SHALL -->
-- _Rationale:_ By limiting sharing to domains or approved security groups used for intercompany collaboration purposes, administrators help prevent sharing with unknown organisations and individuals.
+- _Rationale:_ By limiting sharing to domains or approved security groups used for interorganisation collaboration purposes, administrators help prevent sharing with unknown organisations and individuals.
 - _Last modified:_ June 2023
 - _Note:_ This policy is only applicable if the external sharing slider on the admin page is set to any value other than **Only People in your organisation**.
 - _MITRE ATT&CK TTP Mapping:_
@@ -207,7 +207,7 @@ File and folder default sharing permissions SHALL be set to View.
 
 Sharing files with external users via the usage of **Anyone links** or **Verification codes** is strongly discouraged because it provides access to data within a tenant with weak or no authentication. If these features are used, this section details some access restrictions that could provide limited security risk mitigations.
 
-**Note**: The settings in this section are only applicable if an company is using **Anyone links** or **Verification code** sharing. See each policy below for details.
+**Note**: The settings in this section are only applicable if an organisation is using **Anyone links** or **Verification code** sharing. See each policy below for details.
 
 ### Policies
 #### MS.SHAREPOINT.3.1v1
