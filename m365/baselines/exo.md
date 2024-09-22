@@ -1311,8 +1311,6 @@ At a minimum, the following alerts SHALL be enabled:
 
   f. **Tenant restricted from sending email.**
 
-  g. **A potentially malicious URL click was detected.**
-
 <!--Policy: MS.EXO.16.1v1; Criticality: SHALL -->
 - _Rationale:_ Potentially malicious or service impacting events may go
   undetected without a means of detecting these events. Setting up a mechanism
